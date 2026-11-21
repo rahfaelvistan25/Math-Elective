@@ -1,0 +1,3289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Elective: Calculus for Business | Module 1 – Business Functions & Limits</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  
+  <!-- KaTeX for LaTeX Math Rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  
+  <!-- Chart.js for Interactive Business Graphs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Canvas Confetti for Quiz -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-theme">
+  <!-- Progress Bar -->
+  <div id="scroll-progress-container">
+    <div id="scroll-progress-bar"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <i class="fa-solid fa-chart-line-up brand-icon"></i>
+        <div class="brand-text">
+          <span class="brand-title">Calculus for Business</span>
+          <span class="brand-subtitle">Module 1: Functions & Limits</span>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#intro" class="nav-link active"><i class="fa-solid fa-book-open"></i> Lesson</a>
+        <a href="#interactive-tools" class="nav-link"><i class="fa-solid fa-sliders"></i> Simulators</a>
+        <a href="#part12-practice" class="nav-link"><i class="fa-solid fa-pencil"></i> Practice</a>
+        <a href="#quiz-section" class="nav-link"><i class="fa-solid fa-circle-check"></i> Quiz</a>
+        <a href="#infographic-section" class="nav-link highlight-pill"><i class="fa-solid fa-layer-group"></i> 1-Page Infographic</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="theme-toggle-btn" class="icon-btn" title="Toggle Dark/Light Mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button id="quick-formula-btn" class="btn btn-outline" title="Quick Formula Reference">
+          <i class="fa-solid fa-square-root-variable"></i> Cheatsheet
+        </button>
+        <button id="sidebar-toggle-btn" class="icon-btn mobile-only" title="Toggle Table of Contents">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container Layout -->
+  <div class="page-layout">
+    <!-- Sidebar Table of Contents -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <span class="sidebar-title"><i class="fa-solid fa-list-ul"></i> Module Outline</span>
+        <button id="sidebar-close-btn" class="close-btn mobile-only"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="sidebar-search">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="toc-search" placeholder="Search topics, formulas...">
+      </div>
+      <ul class="toc-list" id="toc-list">
+        <li><a href="#intro" class="toc-item"><span class="toc-num">I</span> Introduction & Objectives</a></li>
+        <li><a href="#part1-functions" class="toc-item"><span class="toc-num">1</span> Part 1: Business Functions & Symbols</a></li>
+        <li><a href="#part2-cost" class="toc-item"><span class="toc-num">2</span> Part 2: Cost Functions (Linear & Nonlinear)</a></li>
+        <li><a href="#part3-revenue" class="toc-item"><span class="toc-num">3</span> Part 3: Revenue Functions</a></li>
+        <li><a href="#part4-profit" class="toc-item"><span class="toc-num">4</span> Part 4: Profit Functions</a></li>
+        <li><a href="#part5-demand-supply" class="toc-item"><span class="toc-num">5</span> Part 5: Demand & Supply Functions</a></li>
+        <li><a href="#part6-equilibrium" class="toc-item"><span class="toc-num">6</span> Part 6: Market Equilibrium</a></li>
+        <li><a href="#part7-breakeven" class="toc-item"><span class="toc-num">7</span> Part 7: Break-Even Analysis & Tool</a></li>
+        <li><a href="#part8-limits-intro" class="toc-item"><span class="toc-num">8</span> Part 8: Introduction to Limits</a></li>
+        <li><a href="#part9-evaluating-limits" class="toc-item"><span class="toc-num">9</span> Part 9: Evaluating Limits & Factoring</a></li>
+        <li><a href="#part10-continuity" class="toc-item"><span class="toc-num">10</span> Part 10: Continuity in Business Models</a></li>
+        <li><a href="#part11-summary" class="toc-item"><span class="toc-num">11</span> Part 11: Comparisons & Formula Summary</a></li>
+        <li><a href="#part12-practice" class="toc-item"><span class="toc-num">12</span> Part 12: Practice Exercises (1-14)</a></li>
+        <li><a href="#part13-solutions" class="toc-item"><span class="toc-num">13</span> Part 13: Answer Key & Solutions</a></li>
+        <li><a href="#part14-review" class="toc-item"><span class="toc-num">14</span> Part 14: Final Review & Study Guide</a></li>
+        <li><a href="#quiz-section" class="toc-item"><span class="toc-num">✓</span> Module 1 Knowledge Check</a></li>
+        <li><a href="#infographic-section" class="toc-item highlight-toc"><span class="toc-num">★</span> One-Page Infographic Poster</a></li>
+      </ul>
+      <div class="sidebar-footer">
+        <div class="reading-stats">
+          <span><i class="fa-solid fa-graduation-cap"></i> Academic Elective</span>
+          <span class="badge badge-primary">Module 1</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Content Area -->
+    <main class="main-content">
+      <!-- Hero Banner -->
+      <section class="hero-section">
+        <div class="hero-badge"><i class="fa-solid fa-sparkles"></i> Math Elective: Calculus for Business</div>
+        <h1 class="hero-title">Module 1 – Business Functions & Limits</h1>
+        <p class="hero-subtitle">
+          Complete beginner-friendly lesson &bull; Step-by-step explanations &bull; Worked business examples &bull; Practice exercises with solutions
+        </p>
+        <div class="hero-tags">
+          <span class="tag"><i class="fa-solid fa-calculator"></i> Business Modeling</span>
+          <span class="tag"><i class="fa-solid fa-scale-balanced"></i> Break-Even & Equilibrium</span>
+          <span class="tag"><i class="fa-solid fa-chart-area"></i> Limits & Continuity</span>
+          <span class="tag"><i class="fa-solid fa-briefcase"></i> Real Business Decision Making</span>
+        </div>
+        <div class="hero-quick-actions">
+          <a href="#intro" class="btn btn-primary"><i class="fa-solid fa-play"></i> Start Lesson</a>
+          <a href="#infographic-section" class="btn btn-secondary"><i class="fa-solid fa-image"></i> View Infographic Poster</a>
+          <button id="toggle-all-solutions-top" class="btn btn-outline"><i class="fa-solid fa-eye"></i> Jump to Practice</button>
+        </div>
+      </section>
+
+      <!-- SECTION I: INTRODUCTION -->
+      <section id="intro" class="lesson-section">
+        <div class="section-header">
+          <span class="section-tag">Section I</span>
+          <h2>Introduction to the Module</h2>
+        </div>
+        
+        <div class="content-card intro-card">
+          <p class="lead-text">
+            Mathematics is an important tool in business. Business owners and managers use mathematical models to understand how much it costs to produce products, how much money they can earn, how much profit they can make, and how changes in prices and production affect their businesses.
+          </p>
+          <p>
+            <strong>Calculus for Business</strong> helps us understand these relationships. In this module, we will study <strong>business functions and limits</strong>, which are important foundations for more advanced topics in calculus.
+          </p>
+
+          <div class="callout callout-bakery">
+            <div class="callout-header">
+              <i class="fa-solid fa-store-alt callout-icon"></i>
+              <h3>The Small Bakery Scenario</h3>
+            </div>
+            <p>Imagine that you own a small bakery. You need to answer critical questions such as:</p>
+            <div class="questions-grid">
+              <div class="q-item">
+                <i class="fa-solid fa-receipt q-icon"></i>
+                <span>How much will it cost to produce 100 cakes?</span>
+              </div>
+              <div class="q-item">
+                <i class="fa-solid fa-coins q-icon"></i>
+                <span>How much money will you earn if you sell 100 cakes?</span>
+              </div>
+              <div class="q-item">
+                <i class="fa-solid fa-scale-unbalanced q-icon"></i>
+                <span>How many cakes should you sell to avoid losing money?</span>
+              </div>
+              <div class="q-item">
+                <i class="fa-solid fa-chart-line-down q-icon"></i>
+                <span>What happens to your average cost when you produce more cakes?</span>
+              </div>
+              <div class="q-item">
+                <i class="fa-solid fa-tags q-icon"></i>
+                <span>How does the selling price affect customer demand?</span>
+              </div>
+              <div class="q-item">
+                <i class="fa-solid fa-arrow-trend-up q-icon"></i>
+                <span>What happens to business costs when production approaches a certain level?</span>
+              </div>
+            </div>
+            <p class="mt-3"><strong>We can answer all of these questions using mathematical functions.</strong></p>
+          </div>
+
+          <!-- Learning Objectives -->
+          <div class="objectives-box">
+            <h3><i class="fa-solid fa-bullseye"></i> Learning Objectives</h3>
+            <p>At the end of this lesson, students should be able to:</p>
+            <ul class="objectives-list">
+              <li><i class="fa-regular fa-square-check obj-check"></i> Explain what a mathematical function is and how it applies to business.</li>
+              <li><i class="fa-regular fa-square-check obj-check"></i> Identify fixed costs, variable costs, total costs, revenue, and profit.</li>
+              <li><i class="fa-regular fa-square-check obj-check"></i> Construct linear and nonlinear business functions.</li>
+              <li><i class="fa-regular fa-square-check obj-check"></i> Understand and solve basic demand and supply functions.</li>
+              <li><i class="fa-regular fa-square-check obj-check"></i> Calculate market equilibrium using demand and supply equations.</li>
+              <li><i class="fa-regular fa-square-check obj-check"></i> Understand break-even analysis and calculate the break-even point.</li>
+              <li><i class="fa-regular fa-square-check obj-check"></i> Evaluate limits using substitution, factoring, and other basic methods.</li>
+              <li><i class="fa-regular fa-square-check obj-check"></i> Explain the meaning of limits in real-life business situations.</li>
+              <li><i class="fa-regular fa-square-check obj-check"></i> Determine whether a business function is continuous or discontinuous.</li>
+              <li><i class="fa-regular fa-square-check obj-check"></i> Solve business-related problems involving functions, limits, and continuity.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PART 1: UNDERSTANDING BUSINESS FUNCTIONS -->
+      <section id="part1-functions" class="lesson-section">
+        <div class="section-header">
+          <span class="section-tag">Part 1</span>
+          <h2>Understanding Business Functions</h2>
+        </div>
+
+        <div class="content-card">
+          <h3>1. What is a function?</h3>
+          <p>
+            A <strong>function</strong> is a mathematical relationship in which one quantity depends on another quantity.
+          </p>
+          <p class="highlight-quote">
+            In simpler words, a function tells us how one value changes when another value changes.
+          </p>
+
+          <h4>Simple example</h4>
+          <p>
+            Suppose a school supplies store sells notebooks for <strong>₱25 each</strong>. The total sales depend on the number of notebooks sold.
+          </p>
+
+          <div class="table-responsive">
+            <table class="styled-table text-center">
+              <thead>
+                <tr>
+                  <th>Number of notebooks (\(x\))</th>
+                  <th>Total sales (\(R(x)\))</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>₱25</td></tr>
+                <tr><td>2</td><td>₱50</td></tr>
+                <tr><td>3</td><td>₱75</td></tr>
+                <tr><td>4</td><td>₱100</td></tr>
+                <tr><td>5</td><td>₱125</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>Notice that the total sales increase as the number of notebooks sold increases.</p>
+          <p>We can represent this relationship using a function:</p>
+          <div class="formula-box">
+            \[ R(x)=25x \]
+          </div>
+          <div class="definition-breakdown">
+            <p><strong>Where:</strong></p>
+            <ul>
+              <li>\(R(x)\) = total revenue or sales</li>
+              <li>\(x\) = number of notebooks sold</li>
+              <li>\(25\) = selling price of each notebook</li>
+            </ul>
+          </div>
+
+          <!-- Step by step example -->
+          <div class="example-card">
+            <div class="example-header">
+              <span class="example-badge">Step-by-step example</span>
+              <h4>School Supplies Store Sales</h4>
+            </div>
+            <p class="example-question"><strong>Question:</strong> How much revenue will the store earn if it sells 12 notebooks?</p>
+            <div class="step-process">
+              <div class="step-item">
+                <span class="step-number">Step 1</span>
+                <div class="step-body">
+                  <strong>Write the function:</strong>
+                  \[ R(x)=25x \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 2</span>
+                <div class="step-body">
+                  <strong>Identify the given value:</strong> The store sells 12 notebooks, so:
+                  \[ x=12 \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 3</span>
+                <div class="step-body">
+                  <strong>Substitute 12 into the function:</strong>
+                  \[ R(12)=25(12) \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 4</span>
+                <div class="step-body">
+                  <strong>Multiply:</strong>
+                  \[ R(12)=300 \]
+                </div>
+              </div>
+            </div>
+            <div class="answer-box">
+              <span class="answer-title"><i class="fa-solid fa-check-circle"></i> Final Answer:</span>
+              <p>The store will earn <strong>₱300</strong> from selling 12 notebooks.</p>
+            </div>
+          </div>
+
+          <div class="tip-banner">
+            <i class="fa-solid fa-lightbulb"></i>
+            <span><strong>Remember:</strong> A function allows a business to predict an outcome based on a given quantity.</span>
+          </div>
+
+          <!-- Section 2 -->
+          <h3 class="mt-4">2. Important symbols used in business functions</h3>
+          <p>Before studying business functions, understand these essential symbols:</p>
+
+          <div class="table-responsive">
+            <table class="styled-table">
+              <thead>
+                <tr>
+                  <th>Symbol</th>
+                  <th>Meaning</th>
+                  <th>Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>\(x\) or \(q\)</strong></td>
+                  <td>Quantity or number of products</td>
+                  <td>100 products</td>
+                </tr>
+                <tr>
+                  <td><strong>\(P\)</strong></td>
+                  <td>Price per unit or selling price</td>
+                  <td>₱50</td>
+                </tr>
+                <tr>
+                  <td><strong>\(C(x)\)</strong></td>
+                  <td>Total cost function</td>
+                  <td>Total production expenses</td>
+                </tr>
+                <tr>
+                  <td><strong>\(R(x)\)</strong></td>
+                  <td>Revenue function</td>
+                  <td>Total sales income</td>
+                </tr>
+                <tr>
+                  <td><strong>\(\pi(x)\)</strong></td>
+                  <td>Profit function</td>
+                  <td>Money earned after costs</td>
+                </tr>
+                <tr>
+                  <td><strong>\(F\)</strong></td>
+                  <td>Fixed cost</td>
+                  <td>Rent</td>
+                </tr>
+                <tr>
+                  <td><strong>\(v\)</strong></td>
+                  <td>Variable cost per unit</td>
+                  <td>Materials per product</td>
+                </tr>
+                <tr>
+                  <td><strong>\(D\)</strong></td>
+                  <td>Demand</td>
+                  <td>Quantity customers want to buy</td>
+                </tr>
+                <tr>
+                  <td><strong>\(S\)</strong></td>
+                  <td>Supply</td>
+                  <td>Quantity sellers offer</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-muted mt-2"><em>Note: For the examples in this lesson, we will usually use \(x\) or \(q\) to represent the number of products.</em></p>
+        </div>
+      </section>
+
+      <!-- PART 2: COST FUNCTIONS -->
+      <section id="part2-cost" class="lesson-section">
+        <div class="section-header">
+          <span class="section-tag">Part 2</span>
+          <h2>Cost Functions</h2>
+        </div>
+
+        <div class="content-card">
+          <h3>3. What is a cost function?</h3>
+          <p>
+            A <strong>cost function</strong> represents the total amount of money a business spends to produce goods or provide services.
+          </p>
+          <p>For example, a bakery spends money on:</p>
+          <div class="pill-grid">
+            <span class="pill-item"><i class="fa-solid fa-wheat-awn"></i> Flour, sugar, eggs & ingredients</span>
+            <span class="pill-item"><i class="fa-solid fa-bolt"></i> Electricity and water</span>
+            <span class="pill-item"><i class="fa-solid fa-users"></i> Employee salaries</span>
+            <span class="pill-item"><i class="fa-solid fa-blender"></i> Equipment</span>
+            <span class="pill-item"><i class="fa-solid fa-building"></i> Rent</span>
+            <span class="pill-item"><i class="fa-solid fa-box"></i> Packaging materials</span>
+          </div>
+          <p class="mt-3">These expenses are part of the business's costs. There are two important types of costs:</p>
+
+          <div class="two-col-grid">
+            <!-- Fixed Costs -->
+            <div class="concept-subcard">
+              <div class="concept-head">
+                <i class="fa-solid fa-lock"></i>
+                <h4>A. Fixed costs (\(F\))</h4>
+              </div>
+              <p>Fixed costs are expenses that generally stay the same even when the business produces more or fewer products, within a relevant operating range.</p>
+              <ul class="mini-list">
+                <li>Monthly rent</li>
+                <li>Business permits</li>
+                <li>Insurance</li>
+                <li>Equipment rental</li>
+                <li>Fixed monthly salaries</li>
+              </ul>
+              <div class="example-box-mini">
+                <strong>Example:</strong> A bakery pays ₱10,000 monthly rent. Whether it produces 100 cakes or 500 cakes, the rent remains ₱10,000 for that month.
+                <div class="formula-mini">\[ F=₱10,000 \]</div>
+              </div>
+            </div>
+
+            <!-- Variable Costs -->
+            <div class="concept-subcard">
+              <div class="concept-head">
+                <i class="fa-solid fa-arrow-trend-up"></i>
+                <h4>B. Variable costs (\(VC\))</h4>
+              </div>
+              <p>Variable costs change depending on how many products a business produces.</p>
+              <ul class="mini-list">
+                <li>Raw materials</li>
+                <li>Packaging</li>
+                <li>Ingredients</li>
+                <li>Production supplies</li>
+                <li>Per-unit manufacturing expenses</li>
+              </ul>
+              <div class="example-box-mini">
+                <strong>Example:</strong> Bakery spends ₱30 on ingredients & packaging for every cake:
+                <ul class="sub-list">
+                  <li>1 cake = ₱30</li>
+                  <li>2 cakes = ₱60</li>
+                  <li>10 cakes = ₱300</li>
+                  <li>100 cakes = ₱3,000</li>
+                </ul>
+                <div class="formula-mini">\[ VC(x)=vx \]</div>
+                <small>\(VC(x)\) = total variable cost, \(v\) = variable cost per unit, \(x\) = units produced</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Linear cost functions -->
+          <h3 class="mt-4">4. Linear cost functions</h3>
+          <p>
+            A <strong>linear cost function</strong> is a cost relationship that increases at a <em>constant rate</em>.
+            This means that every additional product adds the same amount to total cost.
+          </p>
+          <div class="formula-box primary-formula">
+            \[ \boxed{C(x)=F+vx} \]
+            <div class="formula-legend">
+              <span>\(C(x)\) = total cost</span> &bull; 
+              <span>\(F\) = fixed cost</span> &bull; 
+              <span>\(v\) = variable cost per unit</span> &bull; 
+              <span>\(x\) = quantity produced</span>
+            </div>
+          </div>
+
+          <!-- Worked Example 1 -->
+          <div class="example-card">
+            <div class="example-header">
+              <span class="example-badge">Worked Example 1</span>
+              <h4>Bakery Production Cost</h4>
+            </div>
+            <p><strong>A bakery has the following expenses:</strong></p>
+            <ul>
+              <li>Monthly rent: ₱10,000</li>
+              <li>Ingredients and packaging per cake: ₱30</li>
+              <li>Number of cakes produced: \(x\)</li>
+            </ul>
+            <p class="example-question"><strong>Question:</strong> Construct the cost function and determine the total cost of producing 100 cakes.</p>
+            
+            <div class="step-process">
+              <div class="step-item">
+                <span class="step-number">Step 1</span>
+                <div class="step-body">
+                  <strong>Identify the fixed cost:</strong> The monthly rent does not change with the number of cakes.
+                  \[ F=10,000 \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 2</span>
+                <div class="step-body">
+                  <strong>Identify the variable cost per unit:</strong> Each cake costs ₱30 to produce.
+                  \[ v=30 \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 3</span>
+                <div class="step-body">
+                  <strong>Write the linear cost function:</strong>
+                  \[ C(x)=F+vx \]
+                  Substitute the values:
+                  \[ \boxed{C(x)=10,000+30x} \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 4</span>
+                <div class="step-body">
+                  <strong>Substitute 100 for \(x\):</strong>
+                  \[ C(100)=10,000+30(100) \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 5</span>
+                <div class="step-body">
+                  <strong>Multiply & Add:</strong>
+                  \[ C(100)=10,000+3,000 \]
+                  \[ C(100)=13,000 \]
+                </div>
+              </div>
+            </div>
+
+            <div class="answer-box">
+              <span class="answer-title"><i class="fa-solid fa-check-circle"></i> Final Answer:</span>
+              <p>The total cost of producing 100 cakes is <strong>₱13,000</strong>.</p>
+            </div>
+
+            <div class="understanding-box mt-3">
+              <h5>Understanding the result</h5>
+              <p>The ₱13,000 total cost consists of:</p>
+              <table class="styled-table mini-table">
+                <thead>
+                  <tr><th>Expense</th><th>Amount</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Fixed cost (rent)</td><td>₱10,000</td></tr>
+                  <tr><td>Variable cost (ingredients and packaging: \(30 \times 100\))</td><td>₱3,000</td></tr>
+                  <tr class="table-total"><td>Total cost</td><td>₱13,000</td></tr>
+                </tbody>
+              </table>
+              <p class="text-sm mt-1"><strong>Important:</strong> Fixed cost remains constant, but variable cost increases as production increases.</p>
+            </div>
+          </div>
+
+          <!-- Another Example: Printing Business -->
+          <div class="example-card secondary-example">
+            <div class="example-header">
+              <span class="example-badge badge-alt">Another Example</span>
+              <h4>Printing Business</h4>
+            </div>
+            <p>A printing shop pays ₱5,000 monthly rent. Printing each shirt costs ₱80 in materials and labor.</p>
+            <p>Its cost function is: \[ C(x)=5,000+80x \]</p>
+            <p><strong>Find the cost of producing 50 shirts:</strong></p>
+            <div class="math-steps">
+              \[ C(50)=5,000+80(50) \]
+              \[ C(50)=5,000+4,000 \]
+              \[ \boxed{C(50)=₱9,000} \]
+            </div>
+            <p class="mt-2">The total production cost is <strong>₱9,000</strong>.</p>
+          </div>
+
+          <!-- 5. Nonlinear cost functions -->
+          <h3 class="mt-4">5. Nonlinear cost functions</h3>
+          <p>
+            A <strong>nonlinear cost function</strong> is a cost relationship that does <em>not</em> increase at a constant rate.
+            In a nonlinear model, the cost of producing additional products can change as production increases.
+          </p>
+          <div class="info-card-reasons">
+            <h5>Why does cost become nonlinear in business?</h5>
+            <ul>
+              <li>Machines become less efficient when overused.</li>
+              <li>Workers need overtime pay.</li>
+              <li>Additional equipment is required.</li>
+              <li>The business receives bulk discounts on materials.</li>
+              <li>Production becomes more complicated at higher quantities.</li>
+            </ul>
+          </div>
+
+          <p>One common nonlinear cost function is <strong>quadratic</strong>:</p>
+          <div class="formula-box">
+            \[ \boxed{C(x)=F+ax+bx^2} \]
+          </div>
+          <p class="text-sm">For this example, \(a\) represents a basic variable cost and \(bx^2\) represents an additional production-related cost.</p>
+
+          <!-- Worked Example 2 -->
+          <div class="example-card">
+            <div class="example-header">
+              <span class="example-badge">Worked Example 2</span>
+              <h4>Growing Production Costs (Quadratic Cost)</h4>
+            </div>
+            <p><strong>A furniture company has:</strong></p>
+            <ul>
+              <li>Fixed cost: ₱2,000</li>
+              <li>Basic variable cost: ₱20 per table</li>
+              <li>Additional production cost represented by \(0.05x^2\)</li>
+            </ul>
+            <p>Its cost function is: \[ C(x)=2,000+20x+0.05x^2 \]</p>
+            <p class="example-question"><strong>Question:</strong> Find the total cost of producing 20 tables.</p>
+
+            <div class="step-process">
+              <div class="step-item">
+                <span class="step-number">Step 1</span>
+                <div class="step-body">Write the function: \[ C(x)=2,000+20x+0.05x^2 \]</div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 2</span>
+                <div class="step-body">Substitute \(x=20\): \[ C(20)=2,000+20(20)+0.05(20)^2 \]</div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 3</span>
+                <div class="step-body">Solve multiplication and exponent: \[ C(20)=2,000+400+0.05(400) \]</div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 4</span>
+                <div class="step-body">Multiply: \[ C(20)=2,000+400+20 \]</div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 5</span>
+                <div class="step-body">Add: \[ \boxed{C(20)=₱2,420} \]</div>
+              </div>
+            </div>
+
+            <div class="answer-box">
+              <span class="answer-title"><i class="fa-solid fa-check-circle"></i> Final Answer:</span>
+              <p>The total cost of producing 20 tables is <strong>₱2,420</strong>.</p>
+            </div>
+
+            <div class="callout callout-neutral mt-3">
+              <h5>What makes this function nonlinear?</h5>
+              <p>
+                The term <strong>\(x^2\)</strong> makes the function nonlinear. The total cost does not increase by the same amount for every additional table. The additional production-related cost becomes larger as production increases.
+              </p>
+            </div>
+          </div>
+
+          <!-- Linear vs Nonlinear Comparison Table -->
+          <h4>Linear vs. nonlinear cost functions</h4>
+          <div class="table-responsive">
+            <table class="styled-table">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Linear Cost</th>
+                  <th>Nonlinear Cost</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Formula</strong></td>
+                  <td>\(C(x)=F+vx\)</td>
+                  <td>\(C(x)=F+ax+bx^2\)</td>
+                </tr>
+                <tr>
+                  <td><strong>Rate of Increase</strong></td>
+                  <td>Constant increase per unit</td>
+                  <td>Rate of increase can change</td>
+                </tr>
+                <tr>
+                  <td><strong>Graphical Shape</strong></td>
+                  <td>Straight-line graph</td>
+                  <td>Curved graph</td>
+                </tr>
+                <tr>
+                  <td><strong>Business Context</strong></td>
+                  <td>Simple production model</td>
+                  <td>More flexible production model (overtime, wear, bulk tiers)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- PART 3: REVENUE FUNCTIONS -->
+      <section id="part3-revenue" class="lesson-section">
+        <div class="section-header">
+          <span class="section-tag">Part 3</span>
+          <h2>Revenue Functions</h2>
+        </div>
+
+        <div class="content-card">
+          <h3>6. What is revenue?</h3>
+          <p>
+            <strong>Revenue</strong> is the total amount of money a business receives from selling products or services before deducting expenses.
+          </p>
+          <div class="example-box-mini">
+            For example, if a store sells 20 bags for ₱500 each, its revenue is:
+            \[ 20(500)=₱10,000 \]
+          </div>
+          <div class="warning-callout">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <div>
+              <strong>Revenue is not the same as profit!</strong>
+              <p>A business may have high revenue but low profit (or even a loss) if its expenses are also high.</p>
+            </div>
+          </div>
+
+          <!-- 7. Linear revenue functions -->
+          <h3 class="mt-4">7. Linear revenue functions</h3>
+          <p>A <strong>linear revenue function</strong> applies when the selling price per unit remains constant.</p>
+          <div class="formula-box primary-formula">
+            \[ \boxed{R(x)=px} \]
+            <div class="formula-legend">
+              <span>\(R(x)\) = total revenue</span> &bull; 
+              <span>\(p\) = selling price per unit</span> &bull; 
+              <span>\(x\) = number of units sold</span>
+            </div>
+          </div>
+
+          <!-- Worked Example 3 -->
+          <div class="example-card">
+            <div class="example-header">
+              <span class="example-badge">Worked Example 3</span>
+              <h4>Clothing Store Revenue</h4>
+            </div>
+            <p>A clothing store sells T-shirts for <strong>₱250 each</strong>.</p>
+            <p class="example-question"><strong>Question:</strong> How much revenue will the store earn if it sells 40 T-shirts?</p>
+
+            <div class="step-process">
+              <div class="step-item">
+                <span class="step-number">Step 1</span>
+                <div class="step-body">Identify the selling price: \[ p=250 \]</div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 2</span>
+                <div class="step-body">Identify the number of products sold: \[ x=40 \]</div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 3</span>
+                <div class="step-body">Write the revenue function: \[ R(x)=250x \]</div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 4</span>
+                <div class="step-body">Substitute 40: \[ R(40)=250(40) \]</div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 5</span>
+                <div class="step-body">Multiply: \[ \boxed{R(40)=₱10,000} \]</div>
+              </div>
+            </div>
+
+            <div class="answer-box">
+              <span class="answer-title"><i class="fa-solid fa-check-circle"></i> Final Answer:</span>
+              <p>The store earns <strong>₱10,000</strong> in revenue.</p>
+            </div>
+          </div>
+
+          <!-- Another Example: Water Bottle -->
+          <div class="example-card secondary-example">
+            <div class="example-header">
+              <span class="example-badge badge-alt">Another Example</span>
+              <h4>Water Bottle Business</h4>
+            </div>
+            <p>A business sells water bottles for ₱35 each. Its revenue function is: \[ R(x)=35x \]</p>
+            <p><strong>Find the revenue from selling 150 bottles:</strong></p>
+            <div class="math-steps">
+              \[ R(150)=35(150) \]
+              \[ \boxed{R(150)=₱5,250} \]
+            </div>
+          </div>
+
+          <!-- 8. Nonlinear revenue functions -->
+          <h3 class="mt-4">8. Nonlinear revenue functions</h3>
+          <p>
+            Revenue becomes <strong>nonlinear</strong> when the selling price changes depending on the number of products sold.
+          </p>
+          <div class="reasons-tags">
+            <span class="pill-tag">Discounts for bulk purchases</span>
+            <span class="pill-tag">Promotional pricing</span>
+            <span class="pill-tag">Changes in customer demand</span>
+            <span class="pill-tag">Competition</span>
+            <span class="pill-tag">Price increases or decreases</span>
+          </div>
+
+          <p class="mt-3">
+            Suppose a business finds that it needs to lower its price to sell more products. Its selling price may be represented by:
+            \[ p(x)=120-x \]
+            This means the price per unit depends on the quantity sold.
+          </p>
+          <p>The revenue function is: \[ R(x)=x \times p(x) \]</p>
+          <p>Substitute the selling-price function and expand:</p>
+          <div class="formula-box">
+            \[ R(x)=x(120-x) \]
+            \[ \boxed{R(x)=120x-x^2} \]
+          </div>
+          <p class="text-sm">This is a nonlinear revenue function because it contains \(x^2\).</p>
+
+          <!-- Worked Example 4 -->
+          <div class="example-card">
+            <div class="example-header">
+              <span class="example-badge">Worked Example 4</span>
+              <h4>Nonlinear Revenue Calculation</h4>
+            </div>
+            <p>A business uses the following selling-price model: \[ p(x)=120-x \]</p>
+            <p class="example-question"><strong>Question:</strong> Find the total revenue if the business sells 50 products.</p>
+
+            <div class="step-process">
+              <div class="step-item">
+                <span class="step-number">Step 1</span>
+                <div class="step-body">Write the price function: \[ p(x)=120-x \]</div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 2</span>
+                <div class="step-body">
+                  Substitute 50:
+                  \[ p(50)=120-50 = 70 \]
+                  The selling price is <strong>₱70 per product</strong>.
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 3</span>
+                <div class="step-body">
+                  Calculate revenue:
+                  \[ R(x)=xp(x) \]
+                  \[ R(50)=50(70) = \boxed{₱3,500} \]
+                </div>
+              </div>
+            </div>
+
+            <div class="answer-box">
+              <span class="answer-title"><i class="fa-solid fa-check-circle"></i> Final Answer:</span>
+              <p>The business earns <strong>₱3,500</strong>.</p>
+            </div>
+          </div>
+
+          <!-- Understanding Table -->
+          <h4>Understanding the nonlinear relationship</h4>
+          <div class="table-responsive">
+            <table class="styled-table text-center">
+              <thead>
+                <tr>
+                  <th>Products sold (\(x\))</th>
+                  <th>Price per product (\(p(x)\))</th>
+                  <th>Total revenue (\(R(x)\))</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>20</td><td>₱100</td><td>₱2,000</td></tr>
+                <tr><td>40</td><td>₱80</td><td>₱3,200</td></tr>
+                <tr class="table-highlight"><td>50</td><td>₱70</td><td>₱3,500</td></tr>
+                <tr class="table-max"><td><strong>60 (Peak)</strong></td><td><strong>₱60</strong></td><td><strong>₱3,600 (Maximum)</strong></td></tr>
+                <tr><td>100</td><td>₱20</td><td>₱2,000</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tip-banner">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <div>
+              <strong>Notice that selling more products does not always mean earning more revenue!</strong>
+              <p>The business may need to reduce its selling price to attract additional customers. Eventually, the lower price can outweigh the benefit of selling more units.</p>
+            </div>
+          </div>
+
+          <div class="comparison-quote mt-3">
+            <p><strong>Important difference:</strong></p>
+            <ul>
+              <li><strong>Linear revenue:</strong> Every additional unit sold produces the same additional revenue when the price is constant.</li>
+              <li><strong>Nonlinear revenue:</strong> Revenue changes at a different rate because the selling price depends on quantity.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PART 4: PROFIT FUNCTIONS -->
+      <section id="part4-profit" class="lesson-section">
+        <div class="section-header">
+          <span class="section-tag">Part 4</span>
+          <h2>Profit Functions</h2>
+        </div>
+
+        <div class="content-card">
+          <h3>9. What is profit?</h3>
+          <p>
+            <strong>Profit</strong> is the amount of money remaining after subtracting the total cost from total revenue.
+          </p>
+          <div class="flow-concept">
+            <div class="flow-box flow-green"><i class="fa-solid fa-arrow-down-left"></i> Revenue (Money in)</div>
+            <div class="flow-operator"><i class="fa-solid fa-minus"></i></div>
+            <div class="flow-box flow-red"><i class="fa-solid fa-arrow-up-right"></i> Cost (Money spent)</div>
+            <div class="flow-operator"><i class="fa-solid fa-equals"></i></div>
+            <div class="flow-box flow-blue"><i class="fa-solid fa-wallet"></i> Profit (What remains)</div>
+          </div>
+
+          <div class="formula-box primary-formula mt-3">
+            \[ \boxed{\pi(x)=R(x)-C(x)} \]
+            <div class="formula-legend">
+              <span>\(\pi(x)\) = profit</span> &bull; 
+              <span>\(R(x)\) = revenue</span> &bull; 
+              <span>\(C(x)\) = total cost</span>
+            </div>
+          </div>
+
+          <p class="mt-2">There are three possible results:</p>
+          <div class="table-responsive">
+            <table class="styled-table">
+              <thead>
+                <tr>
+                  <th>Result</th>
+                  <th>Condition</th>
+                  <th>Business Meaning</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-success-row">
+                  <td><strong>Profit is positive (\(\pi(x) > 0\))</strong></td>
+                  <td>\(R(x) > C(x)\)</td>
+                  <td>The business earns money (Gain).</td>
+                </tr>
+                <tr class="table-warning-row">
+                  <td><strong>Profit is zero (\(\pi(x) = 0\))</strong></td>
+                  <td>\(R(x) = C(x)\)</td>
+                  <td>The business breaks even (No gain, no loss).</td>
+                </tr>
+                <tr class="table-danger-row">
+                  <td><strong>Profit is negative (\(\pi(x) < 0\))</strong></td>
+                  <td>\(R(x) < C(x)\)</td>
+                  <td>The business experiences a loss.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 10. Linear profit functions -->
+          <h3 class="mt-4">10. Linear profit functions</h3>
+          <p>A linear profit function occurs when both revenue and cost are linear.</p>
+
+          <!-- Worked Example 5 -->
+          <div class="example-card">
+            <div class="example-header">
+              <span class="example-badge">Worked Example 5</span>
+              <h4>Small Bakery Profit</h4>
+            </div>
+            <p>A bakery sells each cake for ₱100. Its production costs are:</p>
+            <ul>
+              <li>Fixed cost: ₱2,000</li>
+              <li>Variable cost: ₱30 per cake</li>
+            </ul>
+            <p class="example-question"><strong>Question:</strong> Construct the profit function and determine the profit when the bakery sells 60 cakes.</p>
+
+            <div class="step-process">
+              <div class="step-item">
+                <span class="step-number">Step 1</span>
+                <div class="step-body">
+                  <strong>Write the revenue function:</strong> Selling price is ₱100 per cake.
+                  \[ R(x)=100x \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 2</span>
+                <div class="step-body">
+                  <strong>Write the cost function:</strong>
+                  \[ C(x)=2,000+30x \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 3</span>
+                <div class="step-body">
+                  <strong>Apply the profit formula:</strong>
+                  \[ \pi(x)=R(x)-C(x) \]
+                  Substitute both functions:
+                  \[ \pi(x)=100x-(2,000+30x) \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 4</span>
+                <div class="step-body">
+                  <strong>Remove the parentheses:</strong> (Distribute the negative sign!)
+                  \[ \pi(x)=100x-2,000-30x \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 5</span>
+                <div class="step-body">
+                  <strong>Combine similar terms:</strong>
+                  \[ \boxed{\pi(x)=70x-2,000} \]
+                  <em>This is the bakery's linear profit function.</em>
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 6</span>
+                <div class="step-body">
+                  <strong>Find the profit from selling 60 cakes:</strong> Substitute \(x=60\).
+                  \[ \pi(60)=70(60)-2,000 \]
+                  \[ \pi(60)=4,200-2,000 \]
+                  \[ \boxed{\pi(60)=₱2,200} \]
+                </div>
+              </div>
+            </div>
+
+            <div class="answer-box">
+              <span class="answer-title"><i class="fa-solid fa-check-circle"></i> Final Answer:</span>
+              <p>The bakery earns <strong>₱2,200</strong> in profit after selling 60 cakes.</p>
+            </div>
+
+            <div class="check-box mt-3">
+              <h5><i class="fa-solid fa-circle-question"></i> Check your understanding</h5>
+              <p><strong>Why is the profit function \(70x-2,000\) instead of \(100x-2,000\)?</strong></p>
+              <p>
+                Because the bakery earns ₱100 from each cake but spends ₱30 to produce each cake.
+                The amount remaining from each sale before paying fixed costs is:
+                \[ 100-30=₱70 \]
+                That is why the variable part of the profit function is \(70x\). (This ₱70 is known in business as the <em>contribution margin</em>).
+              </p>
+            </div>
+          </div>
+
+          <!-- 11. Nonlinear profit functions -->
+          <h3 class="mt-4">11. Nonlinear profit functions</h3>
+          <p>Profit becomes nonlinear when revenue or cost, or both, are nonlinear.</p>
+
+          <!-- Worked Example 6 -->
+          <div class="example-card">
+            <div class="example-header">
+              <span class="example-badge">Worked Example 6</span>
+              <h4>Business with Changing Selling Prices</h4>
+            </div>
+            <p>A company sells products using the following price function: \[ p(x)=120-x \]</p>
+            <p>Its total cost function is: \[ C(x)=1,600+20x \]</p>
+            <p class="example-question"><strong>Question:</strong> Construct the profit function and find the profit when 50 products are sold.</p>
+
+            <div class="step-process">
+              <div class="step-item">
+                <span class="step-number">Step 1</span>
+                <div class="step-body">
+                  <strong>Find the revenue function:</strong> Revenue equals quantity multiplied by selling price.
+                  \[ R(x)=xp(x)=x(120-x)=120x-x^2 \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 2</span>
+                <div class="step-body">
+                  <strong>Write the cost function:</strong>
+                  \[ C(x)=1,600+20x \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 3</span>
+                <div class="step-body">
+                  <strong>Apply the profit formula:</strong>
+                  \[ \pi(x)=R(x)-C(x) \]
+                  \[ \pi(x)=(120x-x^2)-(1,600+20x) \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 4</span>
+                <div class="step-body">
+                  <strong>Remove the parentheses:</strong>
+                  \[ \pi(x)=120x-x^2-1,600-20x \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 5</span>
+                <div class="step-body">
+                  <strong>Combine similar terms:</strong>
+                  \[ \boxed{\pi(x)=-x^2+100x-1,600} \]
+                  <em>This is a nonlinear profit function.</em>
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 6</span>
+                <div class="step-body">
+                  <strong>Find the profit when 50 products are sold:</strong>
+                  \[ \pi(50)=-(50)^2+100(50)-1,600 \]
+                  \[ \pi(50)=-2,500+5,000-1,600 \]
+                  \[ \boxed{\pi(50)=₱900} \]
+                </div>
+              </div>
+            </div>
+
+            <div class="answer-box">
+              <span class="answer-title"><i class="fa-solid fa-check-circle"></i> Final Answer:</span>
+              <p>The business earns <strong>₱900</strong> in profit.</p>
+            </div>
+          </div>
+
+          <!-- Linear vs Nonlinear Profit Table -->
+          <h4>Linear vs. nonlinear profit</h4>
+          <div class="table-responsive">
+            <table class="styled-table">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Linear Profit</th>
+                  <th>Nonlinear Profit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Form</strong></td>
+                  <td>\(\pi(x)=mx+b\)</td>
+                  <td>Often contains \(x^2\) or higher powers (e.g. \(-ax^2+bx-c\))</td>
+                </tr>
+                <tr>
+                  <td><strong>Rate of Change</strong></td>
+                  <td>Profit changes at a constant rate</td>
+                  <td>Profit changes at a varying rate</td>
+                </tr>
+                <tr>
+                  <td><strong>Occurrence</strong></td>
+                  <td>Common when selling price and unit costs are constant</td>
+                  <td>Common when price or production costs change with quantity</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- PART 5: DEMAND AND SUPPLY FUNCTIONS -->
+      <section id="part5-demand-supply" class="lesson-section">
+        <div class="section-header">
+          <span class="section-tag">Part 5</span>
+          <h2>Demand and Supply Functions</h2>
+        </div>
+
+        <div class="content-card">
+          <!-- 12. Demand -->
+          <h3>12. What is demand?</h3>
+          <p>
+            <strong>Demand</strong> refers to the quantity of a product or service that customers are willing and able to buy at a given price during a particular period.
+          </p>
+          <div class="example-box-mini">
+            <strong>For example:</strong>
+            <ul>
+              <li>When the price of rice is low, customers may buy more rice.</li>
+              <li>When the price of rice is high, customers may buy less rice.</li>
+            </ul>
+          </div>
+
+          <div class="law-banner law-demand">
+            <div class="law-icon"><i class="fa-solid fa-arrow-down-wide-short"></i></div>
+            <div class="law-content">
+              <h4>Law of demand</h4>
+              <p>When the price increases, the quantity demanded generally <strong>decreases</strong>, assuming other factors remain unchanged.</p>
+              <p>When the price decreases, the quantity demanded generally <strong>increases</strong>.</p>
+            </div>
+          </div>
+
+          <!-- 13. Linear Demand -->
+          <h3 class="mt-4">13. Linear demand functions</h3>
+          <p>A linear demand function describes a straight-line relationship between price and quantity.</p>
+          <div class="formula-box">
+            \[ \boxed{Q_d=a-bP} \]
+            <div class="formula-legend">
+              <span>\(Q_d\) = quantity demanded</span> &bull; 
+              <span>\(a\) = maximum quantity in the model</span> &bull; 
+              <span>\(b\) = sensitivity (rate quantity drops per ₱1 price hike)</span> &bull; 
+              <span>\(P\) = selling price</span>
+            </div>
+          </div>
+
+          <!-- Worked Example 7 -->
+          <div class="example-card">
+            <div class="example-header">
+              <span class="example-badge">Worked Example 7</span>
+              <h4>Demand for Milk Tea</h4>
+            </div>
+            <p>A milk tea shop estimates that its daily demand follows: \[ Q_d=200-4P \] where \(P\) is the selling price in pesos.</p>
+            <p class="example-question"><strong>Question:</strong> How many cups will customers demand if the selling price is ₱30?</p>
+
+            <div class="step-process">
+              <div class="step-item"><span class="step-number">Step 1</span><div class="step-body">Write the demand function: \[ Q_d=200-4P \]</div></div>
+              <div class="step-item"><span class="step-number">Step 2</span><div class="step-body">Substitute the selling price \(P=30\): \[ Q_d=200-4(30) \]</div></div>
+              <div class="step-item"><span class="step-number">Step 3</span><div class="step-body">Multiply: \[ Q_d=200-120 \]</div></div>
+              <div class="step-item"><span class="step-number">Step 4</span><div class="step-body">Subtract: \[ \boxed{Q_d=80} \]</div></div>
+            </div>
+
+            <div class="answer-box">
+              <span class="answer-title"><i class="fa-solid fa-check-circle"></i> Final Answer:</span>
+              <p>Customers are expected to demand <strong>80 cups</strong> per day.</p>
+            </div>
+          </div>
+
+          <!-- Price changes table -->
+          <h4>What happens if the price changes?</h4>
+          <div class="table-responsive">
+            <table class="styled-table text-center">
+              <thead>
+                <tr>
+                  <th>Selling price (\(P\))</th>
+                  <th>Calculation (\(200-4P\))</th>
+                  <th>Quantity demanded (\(Q_d\))</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>₱10</td><td>\(200 - 4(10) = 200 - 40\)</td><td>160 cups</td></tr>
+                <tr><td>₱20</td><td>\(200 - 4(20) = 200 - 80\)</td><td>120 cups</td></tr>
+                <tr class="table-highlight"><td>₱30</td><td>\(200 - 4(30) = 200 - 120\)</td><td>80 cups</td></tr>
+                <tr><td>₱40</td><td>\(200 - 4(40) = 200 - 160\)</td><td>40 cups</td></tr>
+                <tr><td>₱50</td><td>\(200 - 4(50) = 200 - 200\)</td><td>0 cups</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-sm">Notice the relationship: as the price increases, the quantity demanded decreases.</p>
+
+          <!-- 14. Nonlinear demand -->
+          <h3 class="mt-4">14. Nonlinear demand functions</h3>
+          <p>A nonlinear demand function represents a curved relationship between price and quantity demanded.</p>
+          <div class="formula-box">
+            \[ \boxed{P=120-0.01Q^2} \]
+            <div class="formula-legend">
+              <span>\(P\) = price</span> &bull; <span>\(Q\) = quantity demanded</span>
+            </div>
+          </div>
+
+          <!-- Worked Example 8 -->
+          <div class="example-card">
+            <div class="example-header">
+              <span class="example-badge">Worked Example 8</span>
+              <h4>Nonlinear Demand for a Product</h4>
+            </div>
+            <p>A company estimates that the market price associated with selling quantity \(Q\) is: \[ P=120-0.01Q^2 \]</p>
+            <p class="example-question"><strong>Question:</strong> Determine the price when the quantity is 50 units.</p>
+
+            <div class="step-process">
+              <div class="step-item"><span class="step-number">Step 1</span><div class="step-body">Write the function: \[ P=120-0.01Q^2 \]</div></div>
+              <div class="step-item"><span class="step-number">Step 2</span><div class="step-body">Substitute 50: \[ P=120-0.01(50)^2 \]</div></div>
+              <div class="step-item"><span class="step-number">Step 3</span><div class="step-body">Square 50: \[ P=120-0.01(2,500) \]</div></div>
+              <div class="step-item"><span class="step-number">Step 4</span><div class="step-body">Multiply & subtract: \[ P=120-25 \implies \boxed{P=₱95} \]</div></div>
+            </div>
+
+            <div class="answer-box">
+              <span class="answer-title"><i class="fa-solid fa-check-circle"></i> Final Answer:</span>
+              <p>The price associated with a quantity of 50 units is <strong>₱95 per unit</strong>. This is nonlinear because the function contains \(Q^2\).</p>
+            </div>
+          </div>
+
+          <!-- 15. Supply -->
+          <h3 class="mt-4">15. What is supply?</h3>
+          <p>
+            <strong>Supply</strong> refers to the quantity of a product or service that sellers are willing and able to offer for sale at a particular price during a given period.
+          </p>
+          <p>
+            For example, when the selling price of a product increases, businesses may be encouraged to produce and sell more because they have an opportunity to earn more revenue.
+          </p>
+
+          <div class="law-banner law-supply">
+            <div class="law-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+            <div class="law-content">
+              <h4>Law of supply</h4>
+              <p>When the price increases, the quantity supplied generally <strong>increases</strong>, assuming other factors remain unchanged.</p>
+              <p>When the price decreases, the quantity supplied generally <strong>decreases</strong>.</p>
+            </div>
+          </div>
+
+          <!-- 16. Linear supply -->
+          <h3 class="mt-4">16. Linear supply functions</h3>
+          <p>A linear supply function describes a straight-line relationship between price and quantity supplied.</p>
+          <div class="formula-box">
+            \[ \boxed{Q_s=c+dP} \]
+            <div class="formula-legend">
+              <span>\(Q_s\) = quantity supplied</span> &bull; 
+              <span>\(c\) = starting quantity</span> &bull; 
+              <span>\(d\) = rate supply changes per unit price increase</span> &bull; 
+              <span>\(P\) = selling price</span>
+            </div>
+          </div>
+
+          <!-- Worked Example 9 -->
+          <div class="example-card">
+            <div class="example-header">
+              <span class="example-badge">Worked Example 9</span>
+              <h4>Supply of Bottled Water</h4>
+            </div>
+            <p>A bottled water supplier uses the following supply function: \[ Q_s=20+3P \]</p>
+            <p class="example-question"><strong>Question:</strong> How many bottles will the supplier offer when the price is ₱20?</p>
+
+            <div class="step-process">
+              <div class="step-item"><span class="step-number">Step 1</span><div class="step-body">Write the function: \[ Q_s=20+3P \]</div></div>
+              <div class="step-item"><span class="step-number">Step 2</span><div class="step-body">Substitute \(P=20\): \[ Q_s=20+3(20) \]</div></div>
+              <div class="step-item"><span class="step-number">Step 3</span><div class="step-body">Multiply & Add: \[ Q_s=20+60 \implies \boxed{Q_s=80} \]</div></div>
+            </div>
+
+            <div class="answer-box">
+              <span class="answer-title"><i class="fa-solid fa-check-circle"></i> Final Answer:</span>
+              <p>The supplier will offer <strong>80 bottles</strong>.</p>
+            </div>
+          </div>
+
+          <!-- 17. Nonlinear supply -->
+          <h3 class="mt-4">17. Nonlinear supply functions</h3>
+          <p>A nonlinear supply function describes a curved relationship between price and quantity supplied.</p>
+          <div class="formula-box">
+            \[ \boxed{P=20+0.005Q^2} \]
+          </div>
+          <p class="text-sm">The squared term shows that price increases at a changing rate as the supplier offers more products.</p>
+
+          <!-- Worked Example 10 -->
+          <div class="example-card">
+            <div class="example-header">
+              <span class="example-badge">Worked Example 10</span>
+              <h4>Nonlinear Supply Calculation</h4>
+            </div>
+            <p>A supplier uses the function: \[ P=20+0.005Q^2 \]</p>
+            <p class="example-question"><strong>Question:</strong> Find the required price when the supplier offers 40 units.</p>
+
+            <div class="step-process">
+              <div class="step-item"><span class="step-number">Step 1</span><div class="step-body">Write the function: \[ P=20+0.005Q^2 \]</div></div>
+              <div class="step-item"><span class="step-number">Step 2</span><div class="step-body">Substitute \(Q=40\): \[ P=20+0.005(40)^2 \]</div></div>
+              <div class="step-item"><span class="step-number">Step 3</span><div class="step-body">Square 40: \[ P=20+0.005(1,600) \]</div></div>
+              <div class="step-item"><span class="step-number">Step 4</span><div class="step-body">Multiply & add: \[ P=20+8 \implies \boxed{P=₱28} \]</div></div>
+            </div>
+
+            <div class="answer-box">
+              <span class="answer-title"><i class="fa-solid fa-check-circle"></i> Final Answer:</span>
+              <p>The price associated with supplying 40 units is <strong>₱28 per unit</strong>.</p>
+            </div>
+          </div>
+
+          <!-- Summary Table Demand and Supply -->
+          <h4>Summary of demand and supply</h4>
+          <div class="table-responsive">
+            <table class="styled-table">
+              <thead>
+                <tr>
+                  <th>Characteristic</th>
+                  <th>Demand (\(D\))</th>
+                  <th>Supply (\(S\))</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Perspective</strong></td>
+                  <td>Represents customers' willingness to buy</td>
+                  <td>Represents sellers' willingness to sell</td>
+                </tr>
+                <tr>
+                  <td><strong>Behavior with Price</strong></td>
+                  <td>Usually decreases as price increases</td>
+                  <td>Usually increases as price increases</td>
+                </tr>
+                <tr>
+                  <td><strong>Curve Slope</strong></td>
+                  <td>Commonly slopes downward (\(\searrow\))</td>
+                  <td>Commonly slopes upward (\(\nearrow\))</td>
+                </tr>
+                <tr>
+                  <td><strong>Linear Formula</strong></td>
+                  <td>\(Q_d=a-bP\)</td>
+                  <td>\(Q_s=c+dP\)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- PART 6: MARKET EQUILIBRIUM -->
+      <section id="part6-equilibrium" class="lesson-section">
+        <div class="section-header">
+          <span class="section-tag">Part 6</span>
+          <h2>Market Equilibrium</h2>
+        </div>
+
+        <div class="content-card">
+          <h3>18. What is market equilibrium?</h3>
+          <p>
+            <strong>Market equilibrium</strong> occurs when the quantity demanded is equal to the quantity supplied.
+          </p>
+          <p class="highlight-quote">
+            In simpler words, it is the point where the amount customers want to buy matches the amount businesses want to sell.
+          </p>
+          <div class="formula-box primary-formula">
+            \[ \boxed{Q_d=Q_s} \]
+          </div>
+          <p>The corresponding price is called the <strong>equilibrium price (\(P_e\))</strong>, and the corresponding quantity is called the <strong>equilibrium quantity (\(Q_e\))</strong>.</p>
+
+          <!-- 19. Solving linear market equilibrium -->
+          <h3 class="mt-4">19. Solving linear market equilibrium</h3>
+
+          <!-- Worked Example 11 -->
+          <div class="example-card">
+            <div class="example-header">
+              <span class="example-badge">Worked Example 11</span>
+              <h4>Market for School Bags</h4>
+            </div>
+            <p>Suppose the demand and supply functions for school bags are:</p>
+            <ul>
+              <li>Demand: \[ Q_d=200-4P \]</li>
+              <li>Supply: \[ Q_s=20+3P \]</li>
+            </ul>
+            <p class="example-question"><strong>Question:</strong> Find the equilibrium price and equilibrium quantity.</p>
+
+            <div class="step-process">
+              <div class="step-item">
+                <span class="step-number">Step 1</span>
+                <div class="step-body">
+                  <strong>Understand the equilibrium condition:</strong> At equilibrium, demand equals supply:
+                  \[ Q_d=Q_s \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 2</span>
+                <div class="step-body">
+                  <strong>Substitute the two functions:</strong>
+                  \[ 200-4P=20+3P \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 3</span>
+                <div class="step-body">
+                  <strong>Move the numbers to one side:</strong> Subtract 20 from both sides:
+                  \[ 180-4P=3P \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 4</span>
+                <div class="step-body">
+                  <strong>Move the price terms to one side:</strong> Add \(4P\) to both sides:
+                  \[ 180=7P \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 5</span>
+                <div class="step-body">
+                  <strong>Divide both sides by 7:</strong>
+                  \[ P=\frac{180}{7} \implies \boxed{P\approx ₱25.71} \]
+                  <em>This is the equilibrium price.</em>
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 6</span>
+                <div class="step-body">
+                  <strong>Find the equilibrium quantity:</strong> Substitute the price into either the demand or supply function.
+                  <br>Using demand:
+                  \[ Q_d=200-4(25.7143) \]
+                  \[ Q_d\approx 200-102.857 \implies \boxed{Q\approx 97.14} \]
+                </div>
+              </div>
+            </div>
+
+            <div class="answer-box">
+              <span class="answer-title"><i class="fa-solid fa-check-circle"></i> Final Answer:</span>
+              <p>Equilibrium price: <strong>approximately ₱25.71</strong></p>
+              <p>Equilibrium quantity: <strong>approximately 97.14 units</strong></p>
+              <small class="text-muted mt-1 d-block">In an actual market selling whole school bags, the practical quantity would need to be a whole number (e.g. 97 bags).</small>
+            </div>
+          </div>
+
+          <!-- 20. Nonlinear market equilibrium -->
+          <h3 class="mt-4">20. Solving nonlinear market equilibrium</h3>
+
+          <!-- Worked Example 12 -->
+          <div class="example-card">
+            <div class="example-header">
+              <span class="example-badge">Worked Example 12</span>
+              <h4>Nonlinear Demand and Supply</h4>
+            </div>
+            <p>Suppose the market follows these functions:</p>
+            <ul>
+              <li>Demand: \[ P_D=120-0.01Q^2 \]</li>
+              <li>Supply: \[ P_S=20+0.005Q^2 \]</li>
+            </ul>
+            <p class="example-question"><strong>Question:</strong> Find the equilibrium price and quantity.</p>
+
+            <div class="step-process">
+              <div class="step-item">
+                <span class="step-number">Step 1</span>
+                <div class="step-body">
+                  <strong>Set demand equal to supply:</strong>
+                  \[ 120-0.01Q^2=20+0.005Q^2 \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 2</span>
+                <div class="step-body">
+                  <strong>Move the constant numbers to one side:</strong>
+                  \[ 120-20=0.01Q^2+0.005Q^2 \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 3</span>
+                <div class="step-body">
+                  <strong>Combine similar terms:</strong>
+                  \[ 100=0.015Q^2 \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 4</span>
+                <div class="step-body">
+                  <strong>Divide by 0.015:</strong>
+                  \[ Q^2=\frac{100}{0.015}\approx 6,666.67 \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 5</span>
+                <div class="step-body">
+                  <strong>Get the square root:</strong>
+                  \[ Q=\sqrt{6,666.67} \]
+                  Because quantity cannot be negative in this business example:
+                  \[ \boxed{Q\approx 81.65} \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 6</span>
+                <div class="step-body">
+                  <strong>Find the equilibrium price:</strong> Substitute \(Q\) into the supply function:
+                  \[ P_S=20+0.005Q^2 \]
+                  \[ P_S=20+0.005(6,666.67) \]
+                  \[ P_S=20+33.33 \implies \boxed{P\approx ₱53.33} \]
+                </div>
+              </div>
+            </div>
+
+            <div class="answer-box">
+              <span class="answer-title"><i class="fa-solid fa-check-circle"></i> Final Answer:</span>
+              <p>The equilibrium quantity is <strong>approximately 81.65 units</strong>, and the equilibrium price is <strong>approximately ₱53.33</strong>.</p>
+            </div>
+          </div>
+
+          <div class="tip-banner mt-3">
+            <i class="fa-solid fa-lightbulb"></i>
+            <span><strong>Remember:</strong> Market equilibrium is important because it helps businesses understand the price and quantity at which the market's demand and supply match.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PART 7: BREAK-EVEN ANALYSIS & INTERACTIVE TOOL -->
+      <section id="part7-breakeven" class="lesson-section">
+        <div class="section-header">
+          <span class="section-tag">Part 7</span>
+          <h2>Break-Even Analysis</h2>
+        </div>
+
+        <div class="content-card">
+          <h3>21. What is break-even analysis?</h3>
+          <p>
+            <strong>Break-even analysis</strong> is a business method used to determine how many products a company must sell to cover all its costs.
+          </p>
+
+          <div class="three-points-box">
+            <div class="point-item"><i class="fa-solid fa-check"></i> Total revenue equals total cost.</div>
+            <div class="point-item"><i class="fa-solid fa-check"></i> The business does not earn a profit (\(\pi = 0\)).</div>
+            <div class="point-item"><i class="fa-solid fa-check"></i> The business does not experience a loss.</div>
+          </div>
+          <p class="mt-2">In other words, the business earns exactly enough revenue to pay its expenses.</p>
+          <div class="formula-box primary-formula">
+            \[ \boxed{R(x)=C(x)} \]
+          </div>
+
+          <div class="reference-link-box">
+            <i class="fa-solid fa-link"></i> Reference: 
+            <a href="https://invoicefly.com/academy/break-even-point-formula/?utm_source=chatgpt.com" target="_blank" rel="noopener">Break-Even Point Formula: Analysis & Examples - Invoice Fly (invoicefly.com)</a>
+          </div>
+
+          <!-- Understanding break-even using a simple example -->
+          <div class="concept-subcard mt-4">
+            <h4>Understanding break-even using a simple example</h4>
+            <p>Imagine that you start a small burger business. Your expenses are:</p>
+            <ul>
+              <li>Monthly rent: ₱12,000</li>
+              <li>Cost to make each burger: ₱45</li>
+              <li>Selling price of each burger: ₱75</li>
+            </ul>
+            <p>You need to determine how many burgers you must sell before earning a profit.</p>
+            <p>The amount left from each burger sale after paying its ₱45 production cost is:</p>
+            <div class="formula-box">
+              \[ 75-45=₱30 \]
+            </div>
+            <p>
+              This <strong>₱30</strong> is called the <strong>contribution margin per unit</strong>. It helps pay the fixed costs first. After all fixed costs are covered, additional contribution becomes profit under this simple model.
+            </p>
+          </div>
+
+          <!-- INTERACTIVE BREAK-EVEN SIMULATOR (Directly addressing prompt requirement!) -->
+          <div id="interactive-tools" class="interactive-simulator-card mt-4">
+            <div class="sim-header">
+              <div class="sim-title">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Interactive Break-Even Simulator & Graph</h3>
+              </div>
+              <span class="sim-badge">Live Interactive Tool</span>
+            </div>
+            <p class="sim-desc">
+              The interactive illustration below shows how fixed costs, variable costs, and selling price affect the break-even quantity.
+            </p>
+
+            <div class="sim-grid">
+              <!-- Controls -->
+              <div class="sim-controls">
+                <div class="control-group">
+                  <label for="input-fixed-cost">
+                    <span>Fixed Cost (\(F\))</span>
+                    <span class="control-val" id="val-fixed-cost">₱12,000</span>
+                  </label>
+                  <input type="range" id="input-fixed-cost" min="1000" max="30000" step="500" value="12000">
+                  <small class="text-muted">Rent, permits, base overhead</small>
+                </div>
+
+                <div class="control-group">
+                  <label for="input-var-cost">
+                    <span>Variable Cost per unit (\(v\))</span>
+                    <span class="control-val" id="val-var-cost">₱45</span>
+                  </label>
+                  <input type="range" id="input-var-cost" min="5" max="100" step="1" value="45">
+                  <small class="text-muted">Ingredients, packaging, labor per burger</small>
+                </div>
+
+                <div class="control-group">
+                  <label for="input-price">
+                    <span>Selling Price per unit (\(p\))</span>
+                    <span class="control-val" id="val-price">₱75</span>
+                  </label>
+                  <input type="range" id="input-price" min="20" max="150" step="1" value="75">
+                  <small class="text-muted">Price charged to customer</small>
+                </div>
+
+                <div class="sim-presets">
+                  <span class="preset-label">Presets:</span>
+                  <button class="preset-btn active" id="preset-burger">Burger Biz (Ex 13)</button>
+                  <button class="preset-btn" id="preset-textbook">Textbook Demo (\(F=600, v=15, p=35\))</button>
+                  <button class="preset-btn" id="preset-bakery">Bakery (Ex 5)</button>
+                </div>
+
+                <!-- Live Dynamic Formula Display -->
+                <div class="sim-formula-output" id="sim-math-display">
+                  \[ Q^*=\frac{F}{p-v} = \frac{12,000}{75-45} = 400 \text{ units} \]
+                </div>
+                <div class="sim-stat-cards">
+                  <div class="stat-card">
+                    <span class="stat-lbl">Contribution Margin</span>
+                    <span class="stat-num text-primary" id="stat-cm">₱30.00</span>
+                  </div>
+                  <div class="stat-card">
+                    <span class="stat-lbl">Break-Even Units (\(Q^*\))</span>
+                    <span class="stat-num text-success" id="stat-qstar">400</span>
+                  </div>
+                  <div class="stat-card">
+                    <span class="stat-lbl">Break-Even Sales</span>
+                    <span class="stat-num text-warning" id="stat-rstar">₱30,000</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Interactive Chart Canvas -->
+              <div class="sim-chart-wrapper">
+                <div class="chart-legend-custom">
+                  <span class="legend-pill color-rev"><i class="fa-solid fa-square"></i> Total Revenue (\(R(x)\))</span>
+                  <span class="legend-pill color-cost"><i class="fa-solid fa-square"></i> Total Cost (\(C(x)\))</span>
+                  <span class="legend-pill color-fixed"><i class="fa-solid fa-square"></i> Fixed Cost (\(F\))</span>
+                  <span class="legend-pill color-bep"><i class="fa-solid fa-circle-dot"></i> Break-Even Point (\(Q^*\))</span>
+                </div>
+                <div class="chart-container-box">
+                  <canvas id="breakEvenChart"></canvas>
+                </div>
+                <div class="chart-zones-indicator">
+                  <div class="zone-tag zone-loss"><i class="fa-solid fa-arrow-down"></i> Loss Zone (\(x < Q^*\))</div>
+                  <div class="zone-tag zone-profit"><i class="fa-solid fa-arrow-up"></i> Profit Zone (\(x > Q^*\))</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 22. Step-by-step linear break-even analysis -->
+          <h3 class="mt-4">22. Step-by-step linear break-even analysis</h3>
+
+          <!-- Worked Example 13 -->
+          <div class="example-card">
+            <div class="example-header">
+              <span class="example-badge">Worked Example 13</span>
+              <h4>Burger Business Break-Even Calculation</h4>
+            </div>
+            <p><strong>Given:</strong></p>
+            <table class="styled-table mini-table">
+              <thead>
+                <tr><th>Business information</th><th>Amount</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Fixed cost (\(F\))</td><td>₱12,000</td></tr>
+                <tr><td>Variable cost per burger (\(v\))</td><td>₱45</td></tr>
+                <tr><td>Selling price per burger (\(p\))</td><td>₱75</td></tr>
+              </tbody>
+            </table>
+            <p class="example-question mt-2"><strong>Question:</strong> How many burgers must the business sell to break even?</p>
+
+            <div class="step-process">
+              <div class="step-item">
+                <span class="step-number">Step 1</span>
+                <div class="step-body">
+                  <strong>Write the revenue function:</strong> Revenue is selling price multiplied by quantity:
+                  \[ R(x)=75x \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 2</span>
+                <div class="step-body">
+                  <strong>Write the cost function:</strong> Total cost equals fixed cost plus variable cost:
+                  \[ C(x)=12,000+45x \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 3</span>
+                <div class="step-body">
+                  <strong>Set revenue equal to cost:</strong>
+                  \[ R(x)=C(x) \]
+                  \[ 75x=12,000+45x \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 4</span>
+                <div class="step-body">
+                  <strong>Move the variable terms to one side:</strong> Subtract \(45x\) from both sides:
+                  \[ 75x-45x=12,000 \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 5</span>
+                <div class="step-body">
+                  <strong>Subtract:</strong>
+                  \[ 30x=12,000 \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 6</span>
+                <div class="step-body">
+                  <strong>Divide by 30:</strong>
+                  \[ x=\frac{12,000}{30} \implies \boxed{x=400} \]
+                </div>
+              </div>
+            </div>
+
+            <div class="answer-box">
+              <span class="answer-title"><i class="fa-solid fa-check-circle"></i> Final Answer:</span>
+              <p>The business must sell <strong>400 burgers</strong> to break even.</p>
+            </div>
+
+            <!-- Step 7: Verify -->
+            <div class="verification-box mt-3">
+              <h5>Step 7: Verify the answer</h5>
+              <p>Calculate revenue at 400 units: \[ R(400)=75(400)=₱30,000 \]</p>
+              <p>Calculate total cost at 400 units: \[ C(400)=12,000+45(400)=12,000+18,000=₱30,000 \]</p>
+              <p class="text-sm">Both revenue and cost equal ₱30,000. Therefore, <strong>400 burgers is the correct break-even quantity</strong>.</p>
+            </div>
+
+            <!-- Step 8: Table -->
+            <div class="mt-3">
+              <h5>Step 8: What happens after break-even?</h5>
+              <p>Let's compare different sales quantities:</p>
+              <div class="table-responsive">
+                <table class="styled-table text-center">
+                  <thead>
+                    <tr>
+                      <th>Burgers sold (\(x\))</th>
+                      <th>Revenue (\(R(x)=75x\))</th>
+                      <th>Total cost (\(C(x)=12,000+45x\))</th>
+                      <th>Profit or loss (\(\pi(x)\))</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="table-danger-row"><td>200</td><td>₱15,000</td><td>₱21,000</td><td>-₱6,000</td><td>Loss</td></tr>
+                    <tr class="table-danger-row"><td>300</td><td>₱22,500</td><td>₱25,500</td><td>-₱3,000</td><td>Loss</td></tr>
+                    <tr class="table-warning-row"><td><strong>400</strong></td><td><strong>₱30,000</strong></td><td><strong>₱30,000</strong></td><td><strong>₱0</strong></td><td><strong>Break-even</strong></td></tr>
+                    <tr class="table-success-row"><td>500</td><td>₱37,500</td><td>₱34,500</td><td>+₱3,000</td><td>Profit</td></tr>
+                    <tr class="table-success-row"><td>600</td><td>₱45,000</td><td>₱39,000</td><td>+₱6,000</td><td>Profit</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <ul class="bullet-summary mt-2">
+                <li>Selling fewer than 400 burgers results in a <strong>loss</strong>.</li>
+                <li>Selling exactly 400 burgers means <strong>breaking even</strong>.</li>
+                <li>Selling more than 400 burgers produces a <strong>profit</strong>.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 23. Nonlinear break-even analysis -->
+          <h3 class="mt-4">23. Nonlinear break-even analysis</h3>
+          <p>Some businesses have nonlinear revenue or cost functions. They may have <strong>more than one break-even point</strong>.</p>
+
+          <!-- Worked Example 14 -->
+          <div class="example-card">
+            <div class="example-header">
+              <span class="example-badge">Worked Example 14</span>
+              <h4>Product with Changing Selling Prices</h4>
+            </div>
+            <p>A company has the following price function: \[ p(x)=120-x \]</p>
+            <p>Its cost function is: \[ C(x)=1,600+20x \]</p>
+            <p class="example-question"><strong>Question:</strong> Find the break-even quantities.</p>
+
+            <div class="step-process">
+              <div class="step-item">
+                <span class="step-number">Step 1</span>
+                <div class="step-body">
+                  <strong>Construct the revenue function:</strong>
+                  \[ R(x)=xp(x)=x(120-x)=120x-x^2 \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 2</span>
+                <div class="step-body">
+                  <strong>Set revenue equal to cost:</strong>
+                  \[ 120x-x^2=1,600+20x \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 3</span>
+                <div class="step-body">
+                  <strong>Move all terms to one side:</strong>
+                  \[ 120x-x^2-1,600-20x=0 \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 4</span>
+                <div class="step-body">
+                  <strong>Combine similar terms and multiply by -1:</strong>
+                  \[ -x^2+100x-1,600=0 \]
+                  Multiply both sides by -1:
+                  \[ x^2-100x+1,600=0 \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 5</span>
+                <div class="step-body">
+                  <strong>Factor the quadratic equation:</strong>
+                  We need two numbers that multiply to 1,600 and add to -100. Those numbers are <strong>-20</strong> and <strong>-80</strong>:
+                  \[ (x-20)(x-80)=0 \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 6</span>
+                <div class="step-body">
+                  <strong>Solve each factor:</strong>
+                  <br>First: \(x-20=0 \implies x=20\)
+                  <br>Second: \(x-80=0 \implies x=80\)
+                </div>
+              </div>
+            </div>
+
+            <div class="answer-box">
+              <span class="answer-title"><i class="fa-solid fa-check-circle"></i> Final Answer:</span>
+              <p>The company has two break-even quantities: \[ \boxed{x=20 \text{ and } x=80} \]</p>
+            </div>
+
+            <div class="understanding-box mt-3">
+              <h5>What does this mean?</h5>
+              <p>The company breaks even at 20 units and again at 80 units.</p>
+              <p><strong>Between these quantities</strong> (from \(20 < x < 80\)), the mathematical model predicts a <strong>profit</strong>. For example, at 50 units: \(\pi(50)=₱900\).</p>
+              <p>Beyond 80 units, the price has dropped so low to sell high volume that revenue once again drops below costs.</p>
+            </div>
+
+            <div class="tip-banner mt-3">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <span><strong>Important business lesson:</strong> A company should not always assume that producing and selling more products will continuously increase profit. Selling prices, demand, and production costs can change.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PART 8: INTRODUCTION TO LIMITS -->
+      <section id="part8-limits-intro" class="lesson-section">
+        <div class="section-header">
+          <span class="section-tag">Part 8</span>
+          <h2>Introduction to Limits</h2>
+        </div>
+
+        <div class="content-card">
+          <h3>24. What is a limit?</h3>
+          <p>
+            A <strong>limit</strong> describes the value that a function approaches as its input approaches a particular number.
+          </p>
+          <p class="highlight-quote">
+            In simpler words, a limit answers this question: <em>What value is a function getting closer to when the input gets closer to a certain number?</em>
+          </p>
+          <p>Limits are one of the most important foundations of calculus.</p>
+
+          <div class="formula-box primary-formula">
+            \[ \lim_{x\to a}f(x) \]
+            <div class="formula-legend">
+              <em>Read as:</em> "The limit of \(f(x)\) as \(x\) approaches \(a\)."
+            </div>
+            <div class="definition-breakdown mt-2">
+              <ul>
+                <li>\(x\) = input or quantity</li>
+                <li>\(a\) = number that \(x\) is approaching</li>
+                <li>\(f(x)\) = output or business result</li>
+              </ul>
+            </div>
+          </div>
+
+          <h4>Simple everyday example</h4>
+          <p>
+            Imagine a business gradually increasing its production from 90 units to 100 units.
+            We want to study what happens to its average cost as production approaches 100 units.
+          </p>
+          <p>
+            The production quantities might be: <code>99, 99.5, 99.9, 99.99</code>, and so on. These values are getting closer to 100.
+            A limit allows us to study the value the average cost approaches as production approaches 100.
+          </p>
+          <div class="tip-banner">
+            <i class="fa-solid fa-lightbulb"></i>
+            <span><strong>Important idea:</strong> A limit is concerned with what happens <em>near</em> a particular value, not necessarily what happens <em>exactly at</em> that value.</span>
+          </div>
+
+          <!-- 25. Understanding a limit through a table -->
+          <h3 class="mt-4">25. Understanding a limit through a table</h3>
+          <p>Suppose a business uses the function: \[ f(x)=2x+5 \]</p>
+          <p>Find the limit as \(x\) approaches 3: \[ \lim_{x\to3}(2x+5) \]</p>
+          <p>Let's observe what happens when \(x\) gets closer to 3 from both sides:</p>
+
+          <div class="table-responsive">
+            <table class="styled-table text-center">
+              <thead>
+                <tr>
+                  <th>Direction</th>
+                  <th>\(x\)</th>
+                  <th>\(f(x)=2x+5\)</th>
+                  <th>Observation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Approaching from Left</td><td>2.0</td><td>9</td><td rowspan="4" class="align-middle">Approaching 11 from below \(\nearrow\)</td></tr>
+                <tr><td>Approaching from Left</td><td>2.5</td><td>10</td></tr>
+                <tr><td>Approaching from Left</td><td>2.9</td><td>10.8</td></tr>
+                <tr><td>Approaching from Left</td><td>2.99</td><td>10.98</td></tr>
+                <tr class="table-highlight"><td><strong>Exact Target</strong></td><td><strong>3.0</strong></td><td><strong>11</strong></td><td><strong>Value = 11</strong></td></tr>
+                <tr><td>Approaching from Right</td><td>3.01</td><td>11.02</td><td rowspan="3" class="align-middle">Approaching 11 from above \(\searrow\)</td></tr>
+                <tr><td>Approaching from Right</td><td>3.1</td><td>11.2</td></tr>
+                <tr><td>Approaching from Right</td><td>3.5</td><td>12</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="mt-2">Notice that when \(x\) gets closer to 3 from either direction, the function gets closer to 11.</p>
+          <div class="formula-box">
+            \[ \boxed{\lim_{x\to3}(2x+5)=11} \]
+          </div>
+          <p><strong>Why is the answer 11?</strong> Because the function's output approaches 11 when the input approaches 3.</p>
+        </div>
+      </section>
+
+      <!-- PART 9: EVALUATING LIMITS -->
+      <section id="part9-evaluating-limits" class="lesson-section">
+        <div class="section-header">
+          <span class="section-tag">Part 9</span>
+          <h2>Evaluating Limits</h2>
+        </div>
+
+        <div class="content-card">
+          <!-- 26. Direct substitution -->
+          <h3>26. Direct substitution method</h3>
+          <p>
+            The easiest way to evaluate many limits is through <strong>direct substitution</strong>.
+            This means replacing the variable with the number it is approaching.
+          </p>
+
+          <div class="two-col-grid">
+            <!-- Worked Example 15 -->
+            <div class="example-card">
+              <div class="example-header">
+                <span class="example-badge">Worked Example 15</span>
+                <h4>Basic Limit</h4>
+              </div>
+              <p>Evaluate: \[ \lim_{x\to4}(3x+7) \]</p>
+              <div class="step-process">
+                <div class="step-item"><span class="step-number">1</span><div class="step-body">Identify approaching value: \(x\to4\)</div></div>
+                <div class="step-item"><span class="step-number">2</span><div class="step-body">Substitute 4 for \(x\): \(3(4)+7\)</div></div>
+                <div class="step-item"><span class="step-number">3</span><div class="step-body">Multiply: \(12+7\)</div></div>
+                <div class="step-item"><span class="step-number">4</span><div class="step-body">Add: \(\boxed{19}\)</div></div>
+              </div>
+              <div class="answer-box"><p>The limit is <strong>19</strong>.</p></div>
+            </div>
+
+            <!-- Worked Example 16 -->
+            <div class="example-card">
+              <div class="example-header">
+                <span class="example-badge">Worked Example 16</span>
+                <h4>Polynomial Limit</h4>
+              </div>
+              <p>Evaluate: \[ \lim_{x\to3}(x^2+2x+4) \]</p>
+              <div class="step-process">
+                <div class="step-item"><span class="step-number">1</span><div class="step-body">Substitute 3 for \(x\): \((3)^2+2(3)+4\)</div></div>
+                <div class="step-item"><span class="step-number">2</span><div class="step-body">Apply exponent: \(9+6+4\)</div></div>
+                <div class="step-item"><span class="step-number">3</span><div class="step-body">Add: \(\boxed{19}\)</div></div>
+              </div>
+              <div class="answer-box"><p>The limit is <strong>19</strong>.</p></div>
+            </div>
+          </div>
+
+          <!-- Business Application: Total Production Cost -->
+          <div class="example-card secondary-example mt-3">
+            <div class="example-header">
+              <span class="example-badge badge-alt">Business Application</span>
+              <h4>Total Production Cost Limit</h4>
+            </div>
+            <p>A company uses this cost function: \[ C(x)=2,000+15x \]</p>
+            <p>Determine the cost as production approaches 100 units: \[ \lim_{x\to100}(2,000+15x) \]</p>
+            <div class="math-steps">
+              <p>Step 1: Substitute 100: \(C(100)=2,000+15(100)\)</p>
+              <p>Step 2: Multiply: \(C(100)=2,000+1,500\)</p>
+              <p class="final-highlight">\[ \boxed{₱3,500} \]</p>
+            </div>
+            <p class="mt-2">The cost approaches <strong>₱3,500</strong> as production approaches 100 units.</p>
+          </div>
+
+          <!-- 27. Limits involving fractions -->
+          <h3 class="mt-4">27. Limits involving fractions</h3>
+          <p>Direct substitution also works for many rational functions, provided the denominator does not become zero.</p>
+
+          <!-- Worked Example 17 -->
+          <div class="example-card">
+            <div class="example-header">
+              <span class="example-badge">Worked Example 17</span>
+              <h4>Rational Limit</h4>
+            </div>
+            <p>Evaluate: \[ \lim_{x\to2}\frac{x+6}{x+1} \]</p>
+            <div class="step-process">
+              <div class="step-item"><span class="step-number">Step 1</span><div class="step-body">Substitute 2 into numerator & denominator: \(\frac{2+6}{2+1}\)</div></div>
+              <div class="step-item"><span class="step-number">Step 2</span><div class="step-body">Simplify the numerator and denominator: \(\frac{8}{3}\)</div></div>
+            </div>
+            <div class="answer-box">
+              <span class="answer-title"><i class="fa-solid fa-check-circle"></i> Final Answer:</span>
+              <p>\[ \boxed{\frac{8}{3}} \approx 2.67 \]</p>
+            </div>
+          </div>
+
+          <!-- 28. Limits requiring factoring -->
+          <h3 class="mt-4">28. Limits requiring factoring</h3>
+          <p>
+            Sometimes direct substitution produces:
+            \[ \frac{0}{0} \]
+            This is called an <strong>indeterminate form</strong>. It does <em>not</em> mean the limit is zero or that the limit does not exist. We may need to simplify the expression first.
+          </p>
+
+          <!-- Worked Example 18 -->
+          <div class="example-card">
+            <div class="example-header">
+              <span class="example-badge">Worked Example 18</span>
+              <h4>Factoring Method</h4>
+            </div>
+            <p>Evaluate: \[ \lim_{x\to3}\frac{x^2-9}{x-3} \]</p>
+
+            <div class="step-process">
+              <div class="step-item">
+                <span class="step-number">Step 1</span>
+                <div class="step-body">
+                  <strong>Try direct substitution:</strong>
+                  \[ \frac{3^2-9}{3-3}=\frac{9-9}{0}=\frac{0}{0} \]
+                  <em>Direct substitution does not give the answer!</em>
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 2</span>
+                <div class="step-body">
+                  <strong>Factor the numerator:</strong> Remember the difference of two squares:
+                  \[ a^2-b^2=(a-b)(a+b) \]
+                  Therefore:
+                  \[ x^2-9=(x-3)(x+3) \]
+                  Rewrite the expression:
+                  \[ \lim_{x\to3}\frac{(x-3)(x+3)}{x-3} \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 3</span>
+                <div class="step-body">
+                  <strong>Cancel the common factor:</strong> For values near 3 but not equal to 3:
+                  \[ = x+3 \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 4</span>
+                <div class="step-body">
+                  <strong>Substitute 3:</strong>
+                  \[ 3+3=6 \implies \boxed{6} \]
+                </div>
+              </div>
+            </div>
+
+            <div class="answer-box">
+              <span class="answer-title"><i class="fa-solid fa-check-circle"></i> Final Answer:</span>
+              <p>The limit is <strong>6</strong>.</p>
+            </div>
+
+            <div class="callout callout-neutral mt-3">
+              <h5>Why does this work?</h5>
+              <p>
+                The original expression is undefined at \(x=3\), but nearby values can still approach a definite number.
+                The limit is about the values <em>near</em> 3, so the expression can still have a limit even though it is not defined at 3.
+              </p>
+            </div>
+          </div>
+
+          <!-- 29. Another example of factoring -->
+          <h3 class="mt-4">29. Another example of factoring</h3>
+
+          <div class="example-card">
+            <div class="example-header">
+              <span class="example-badge badge-alt">Example</span>
+              <h4>Factoring with Difference of Squares</h4>
+            </div>
+            <p>Evaluate: \[ \lim_{x\to5}\frac{x^2-25}{x-5} \]</p>
+            <div class="step-process">
+              <div class="step-item"><span class="step-number">Step 1</span><div class="step-body">Try direct substitution: \(\frac{5^2-25}{5-5}=\frac{0}{0}\) (indeterminate)</div></div>
+              <div class="step-item"><span class="step-number">Step 2</span><div class="step-body">Factor numerator: \(x^2-25=(x-5)(x+5)\)</div></div>
+              <div class="step-item"><span class="step-number">Step 3</span><div class="step-body">Cancel common factor \((x-5)\): \(=x+5\)</div></div>
+              <div class="step-item"><span class="step-number">Step 4</span><div class="step-body">Substitute 5: \(5+5=10 \implies \boxed{10}\)</div></div>
+            </div>
+            <div class="answer-box"><p>The limit is <strong>10</strong>.</p></div>
+          </div>
+
+          <!-- 30. One-sided limits -->
+          <h3 class="mt-4">30. One-sided limits</h3>
+          <p>A limit can approach a number from either the left or the right.</p>
+
+          <div class="two-col-grid">
+            <div class="concept-subcard">
+              <h4>Left-hand limit</h4>
+              <p>The input approaches a number using values smaller than that number.</p>
+              <div class="formula-mini">\[ \lim_{x\to a^-}f(x) \]</div>
+            </div>
+            <div class="concept-subcard">
+              <h4>Right-hand limit</h4>
+              <p>The input approaches a number using values greater than that number.</p>
+              <div class="formula-mini">\[ \lim_{x\to a^+}f(x) \]</div>
+            </div>
+          </div>
+
+          <p class="mt-3">
+            <strong>Condition for existence:</strong> For an ordinary two-sided limit to exist, the left-hand and right-hand limits must be equal:
+            \[ \lim_{x\to a}f(x) = L \iff \lim_{x\to a^-}f(x) = \lim_{x\to a^+}f(x) = L \]
+          </p>
+
+          <!-- Worked Example 19 -->
+          <div class="example-card">
+            <div class="example-header">
+              <span class="example-badge">Worked Example 19</span>
+              <h4>One-Sided Limits in Delivery Service Fees</h4>
+            </div>
+            <p>Suppose a delivery service charges:</p>
+            <div class="formula-box">
+              \[ f(x)= \begin{cases} 100, & x<10\\ 150, & x\geq10 \end{cases} \]
+            </div>
+            <p>Here, \(x\) represents the number of items ordered and \(f(x)\) represents a fee.</p>
+            <p class="example-question"><strong>Question:</strong> Find the left-hand and right-hand limits as \(x\) approaches 10.</p>
+
+            <div class="step-process">
+              <div class="step-item">
+                <span class="step-number">Step 1</span>
+                <div class="step-body">
+                  <strong>Examine values from the left (\(x < 10\)):</strong>
+                  When \(x < 10\), the fee is ₱100:
+                  \[ \lim_{x\to10^-}f(x)=100 \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 2</span>
+                <div class="step-body">
+                  <strong>Examine values from the right (\(x \ge 10\)):</strong>
+                  When \(x \ge 10\), the fee is ₱150:
+                  \[ \lim_{x\to10^+}f(x)=150 \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 3</span>
+                <div class="step-body">
+                  <strong>Compare the two limits:</strong>
+                  \[ 100 \ne 150 \]
+                </div>
+              </div>
+            </div>
+
+            <div class="answer-box">
+              <span class="answer-title"><i class="fa-solid fa-triangle-exclamation"></i> Final Answer:</span>
+              <p>The two-sided limit <strong>does not exist</strong> because the left-hand and right-hand limits are different.</p>
+              <small class="text-muted">This situation can occur in business models involving fees, price changes, and promotional thresholds.</small>
+            </div>
+          </div>
+
+          <!-- 31. Limits at infinity -->
+          <h3 class="mt-4">31. Limits at infinity</h3>
+          <p>A limit can also describe what happens to a function when the input becomes extremely large:</p>
+          <div class="formula-box">
+            \[ \lim_{x\to\infty}f(x) \]
+          </div>
+          <p class="text-sm">This asks what value the function approaches as \(x\) increases without bound.</p>
+
+          <!-- Business example: Average cost -->
+          <div class="example-card secondary-example">
+            <div class="example-header">
+              <span class="example-badge badge-alt">Business Example</span>
+              <h4>Average Cost as Production Grows</h4>
+            </div>
+            <p>A company has the following average cost function: \[ AC(x)=20+\frac{3,000}{x} \]</p>
+            <p>Here:</p>
+            <ul>
+              <li>₱20 represents the per-unit variable cost.</li>
+              <li>₱3,000 represents the fixed cost spread across the production quantity.</li>
+            </ul>
+
+            <p>Let's calculate the average cost at different quantities:</p>
+            <div class="table-responsive">
+              <table class="styled-table text-center">
+                <thead>
+                  <tr>
+                    <th>Quantity (\(x\))</th>
+                    <th>Average cost per unit (\(AC(x)\))</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>100</td><td>₱50</td></tr>
+                  <tr><td>200</td><td>₱35</td></tr>
+                  <tr><td>500</td><td>₱26</td></tr>
+                  <tr><td>1,000</td><td>₱23</td></tr>
+                  <tr><td>3,000</td><td>₱21</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="mt-2">As production increases, the fixed cost is spread across more products. Therefore, average cost gets closer to ₱20.</p>
+            <div class="formula-box">
+              \[ \lim_{x\to\infty}\left(20+\frac{3,000}{x}\right)=20 \]
+            </div>
+            <div class="tip-banner">
+              <i class="fa-solid fa-lightbulb"></i>
+              <span><strong>Business interpretation:</strong> Under this simplified cost model, the average cost approaches <strong>₱20 per unit</strong> as production becomes very large (economies of scale).</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PART 10: CONTINUITY IN BUSINESS MODELS -->
+      <section id="part10-continuity" class="lesson-section">
+        <div class="section-header">
+          <span class="section-tag">Part 10</span>
+          <h2>Continuity in Business Models</h2>
+        </div>
+
+        <div class="content-card">
+          <!-- 32. What is continuity -->
+          <h3>32. What is continuity?</h3>
+          <p>
+            A function is <strong>continuous</strong> when its graph has no break, jump, or hole at the point being examined.
+          </p>
+          <p class="highlight-quote">
+            In simple words, a continuous function changes without an unexpected break at that point.
+          </p>
+          <div class="callout callout-neutral">
+            <i class="fa-solid fa-pencil"></i>
+            <p><strong>The Pencil Intuition:</strong> Think of drawing a graph using a pencil. If you can draw the graph around a point without lifting your pencil, that is an intuitive picture of continuity.</p>
+          </div>
+          <p class="mt-2">Continuity is useful in business because many business models represent gradual changes in costs, prices, production, and revenue.</p>
+
+          <h5>Examples of continuous business relationships:</h5>
+          <div class="pill-grid">
+            <span class="pill-item"><i class="fa-solid fa-circle-check"></i> Production cost increasing as more products are produced</span>
+            <span class="pill-item"><i class="fa-solid fa-circle-check"></i> Revenue increasing as more products are sold at a constant price</span>
+            <span class="pill-item"><i class="fa-solid fa-circle-check"></i> Delivery cost increasing gradually with distance</span>
+            <span class="pill-item"><i class="fa-solid fa-circle-check"></i> A service fee increasing with additional usage</span>
+          </div>
+
+          <!-- 33. Three conditions -->
+          <h3 class="mt-4">33. Three conditions for continuity</h3>
+          <p>A function \(f(x)\) is continuous at \(x=a\) if <strong>all three conditions</strong> are satisfied:</p>
+
+          <div class="three-conditions-grid">
+            <div class="condition-card">
+              <span class="cond-badge">Condition 1</span>
+              <h4>Defined at Point</h4>
+              <div class="cond-math">\[ f(a)\text{ exists} \]</div>
+              <p>The function has an actual output value at \(x=a\) (no division by zero or empty hole).</p>
+            </div>
+            <div class="condition-card">
+              <span class="cond-badge">Condition 2</span>
+              <h4>Limit Exists</h4>
+              <div class="cond-math">\[ \lim_{x\to a}f(x)\text{ exists} \]</div>
+              <p>The left-hand and right-hand limits approach the exact same finite value.</p>
+            </div>
+            <div class="condition-card">
+              <span class="cond-badge">Condition 3</span>
+              <h4>Limit Equals Value</h4>
+              <div class="cond-math">\[ \lim_{x\to a}f(x)=f(a) \]</div>
+              <p>The value the function approaches matches the actual value at that point.</p>
+            </div>
+          </div>
+          <p class="text-center font-semibold mt-2">All three conditions must be satisfied!</p>
+
+          <!-- 34. Worked Example 20 -->
+          <h3 class="mt-4">34. Worked Example 20: Continuous business function</h3>
+          <div class="example-card">
+            <div class="example-header">
+              <span class="example-badge">Worked Example 20</span>
+              <h4>Checking Continuity of a Cost Function</h4>
+            </div>
+            <p>A company uses this cost function: \[ C(x)=500+20x \]</p>
+            <p class="example-question"><strong>Question:</strong> Determine whether the function is continuous at \(x=10\).</p>
+
+            <div class="step-process">
+              <div class="step-item">
+                <span class="step-number">Step 1</span>
+                <div class="step-body">
+                  <strong>Find the function's value:</strong> Substitute 10:
+                  \[ C(10)=500+20(10)=500+200=700 \]
+                  <em>Condition 1 satisfied: \(C(10)=700\) exists.</em>
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 2</span>
+                <div class="step-body">
+                  <strong>Find the limit as \(x\) approaches 10:</strong>
+                  \[ \lim_{x\to10}(500+20x)=500+20(10)=700 \]
+                  <em>Condition 2 satisfied: Limit exists and equals 700.</em>
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 3</span>
+                <div class="step-body">
+                  <strong>Compare the limit and function value:</strong>
+                  \[ \lim_{x\to10}C(x)=C(10) \]
+                  \[ 700=700 \]
+                  <em>Condition 3 satisfied: Both are equal!</em>
+                </div>
+              </div>
+            </div>
+
+            <div class="answer-box">
+              <span class="answer-title"><i class="fa-solid fa-check-circle"></i> Conclusion: Continuous</span>
+              <p>The cost function is <strong>continuous at \(x=10\)</strong> because its limit exists and equals its actual function value.</p>
+            </div>
+          </div>
+
+          <!-- 35. Piecewise continuity -->
+          <h3 class="mt-4">35. Continuity in piecewise business functions</h3>
+          <p>
+            Some business functions use different formulas depending on the quantity or price. These are called <strong>piecewise functions</strong>.
+          </p>
+          <p>
+            For example, a subscription company offers a plan that costs ₱500 for the first 100 units of usage. After 100 units, customers pay an additional ₱5 for every extra unit.
+          </p>
+          <div class="formula-box">
+            \[ F(x)= \begin{cases} 500, & x\leq100\\ 500+5(x-100), & x>100 \end{cases} \]
+            <div class="formula-legend">\(x\) = units of usage &bull; \(F(x)\) = total fee</div>
+          </div>
+          <p class="example-question"><strong>Is the function continuous at 100 units?</strong></p>
+
+          <div class="step-process">
+            <div class="step-item">
+              <span class="step-number">Step 1</span>
+              <div class="step-body">
+                <strong>Find the left-hand limit:</strong> For values at or below 100, the fee is ₱500:
+                \[ \lim_{x\to100^-}F(x)=500 \]
+              </div>
+            </div>
+            <div class="step-item">
+              <span class="step-number">Step 2</span>
+              <div class="step-body">
+                <strong>Find the right-hand limit:</strong> For values above 100, use \(F(x)=500+5(x-100)\):
+                \[ \lim_{x\to100^+}F(x)=500+5(100-100)=500+0=500 \]
+              </div>
+            </div>
+            <div class="step-item">
+              <span class="step-number">Step 3</span>
+              <div class="step-body">
+                <strong>Compare one-sided limits:</strong> \(500=500\), so the limit exists and equals 500.
+              </div>
+            </div>
+            <div class="step-item">
+              <span class="step-number">Step 4</span>
+              <div class="step-body">
+                <strong>Check actual function value:</strong> Because \(100\leq100\), use the first piece: \(F(100)=500\). The limit and actual value are equal!
+              </div>
+            </div>
+          </div>
+
+          <div class="answer-box">
+            <span class="answer-title"><i class="fa-solid fa-check-circle"></i> Conclusion: Continuous</span>
+            <p>The subscription fee is <strong>continuous at 100 units</strong>.</p>
+            <small>The rate of increase changes at 100 units, but the fee itself does not suddenly jump. A continuous function does not have to be a straight line.</small>
+          </div>
+
+          <!-- 36. Discontinuity in business models -->
+          <h3 class="mt-4">36. Discontinuity in business models</h3>
+          <p>A function is <strong>discontinuous</strong> when there is a break, jump, or hole in its graph.</p>
+          <div class="info-card-reasons">
+            <h5>When does discontinuity happen in business?</h5>
+            <ul>
+              <li>A company suddenly changes its prices.</li>
+              <li>A promotional fee is removed at a specific quantity.</li>
+              <li>A customer moves into a different pricing bracket.</li>
+              <li>A business imposes a sudden additional charge.</li>
+            </ul>
+          </div>
+
+          <!-- Worked Example 21 -->
+          <div class="example-card">
+            <div class="example-header">
+              <span class="example-badge">Worked Example 21</span>
+              <h4>Discontinuous Pricing Function</h4>
+            </div>
+            <p><strong>A company charges:</strong></p>
+            <ul>
+              <li>₱100 for every unit when fewer than 10 units are ordered.</li>
+              <li>₱90 for every unit when 10 or more units are ordered.</li>
+            </ul>
+            <p>The total cost is represented by:</p>
+            <div class="formula-box">
+              \[ C(x)= \begin{cases} 100x, & x<10\\ 90x, & x\geq10 \end{cases} \]
+            </div>
+            <p class="example-question"><strong>Question:</strong> Determine whether the function is continuous at \(x=10\).</p>
+
+            <div class="step-process">
+              <div class="step-item">
+                <span class="step-number">Step 1</span>
+                <div class="step-body">
+                  <strong>Find the left-hand limit:</strong> When approaching 10 from the left (\(x<10\)):
+                  \[ \lim_{x\to10^-}C(x)=100(10)=1,000 \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 2</span>
+                <div class="step-body">
+                  <strong>Find the right-hand limit:</strong> When approaching 10 from the right (\(x\geq10\)):
+                  \[ \lim_{x\to10^+}C(x)=90(10)=900 \]
+                </div>
+              </div>
+              <div class="step-item">
+                <span class="step-number">Step 3</span>
+                <div class="step-body">
+                  <strong>Compare the limits:</strong>
+                  \[ 1,000\ne900 \]
+                  The left-hand and right-hand limits are different. Therefore, the limit does not exist at \(x=10\).
+                </div>
+              </div>
+            </div>
+
+            <div class="answer-box">
+              <span class="answer-title"><i class="fa-solid fa-triangle-exclamation"></i> Conclusion: Discontinuous</span>
+              <p>The function is <strong>discontinuous at \(x=10\)</strong>.</p>
+            </div>
+
+            <div class="callout callout-neutral mt-3">
+              <h5>Business interpretation</h5>
+              <p>
+                The total price suddenly drops from nearly ₱1,000 (e.g. ₱999 for 9.99 units or ₱900 for 9 units at ₱100) to ₱900 when the order reaches 10 units because the discount applies to all units. This creates a jump in the cost function.
+              </p>
+              <p class="text-sm"><strong>Important:</strong> A business model can be discontinuous even when the business itself operates normally. The discontinuity is a mathematical feature of the pricing rule.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PART 11: IMPORTANT COMPARISONS AND SUMMARY -->
+      <section id="part11-summary" class="lesson-section">
+        <div class="section-header">
+          <span class="section-tag">Part 11</span>
+          <h2>Important Comparisons and Summary</h2>
+        </div>
+
+        <div class="content-card">
+          <!-- 37. Summary of all business functions -->
+          <h3>37. Summary of all business functions</h3>
+          <div class="table-responsive">
+            <table class="styled-table">
+              <thead>
+                <tr>
+                  <th>Business concept</th>
+                  <th>General form</th>
+                  <th>Purpose</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Linear cost</td><td>\(C(x)=F+vx\)</td><td>Calculates fixed and variable production costs</td></tr>
+                <tr><td>Nonlinear cost</td><td>\(C(x)=F+ax+bx^2\)</td><td>Models changing production costs</td></tr>
+                <tr><td>Linear revenue</td><td>\(R(x)=px\)</td><td>Calculates revenue at a constant selling price</td></tr>
+                <tr><td>Nonlinear revenue</td><td>\(R(x)=x(a-bx)\)</td><td>Models revenue when price changes with quantity</td></tr>
+                <tr><td>Linear profit</td><td>\(\pi(x)=mx+b\)</td><td>Calculates profit when revenue and cost are linear</td></tr>
+                <tr><td>Nonlinear profit</td><td>Often contains \(x^2\)</td><td>Models profit when revenue or cost changes nonlinearly</td></tr>
+                <tr><td>Linear demand</td><td>\(Q_d=a-bP\)</td><td>Models quantity demanded as price changes</td></tr>
+                <tr><td>Linear supply</td><td>\(Q_s=c+dP\)</td><td>Models quantity supplied as price changes</td></tr>
+                <tr><td>Nonlinear demand</td><td>May contain \(P^2\) or \(Q^2\)</td><td>Models curved demand relationships</td></tr>
+                <tr><td>Nonlinear supply</td><td>May contain \(P^2\) or \(Q^2\)</td><td>Models curved supply relationships</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 38. Summary of limits and continuity -->
+          <h3 class="mt-4">38. Summary of limits and continuity</h3>
+          <div class="table-responsive">
+            <table class="styled-table">
+              <thead>
+                <tr>
+                  <th>Concept</th>
+                  <th>Meaning</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Limit</strong></td><td>The value a function approaches</td></tr>
+                <tr><td><strong>Direct substitution</strong></td><td>Replacing the variable with the approaching value</td></tr>
+                <tr><td><strong>Factoring</strong></td><td>Simplifying an expression when direct substitution gives \(0/0\)</td></tr>
+                <tr><td><strong>Left-hand limit</strong></td><td>The value approached from smaller inputs</td></tr>
+                <tr><td><strong>Right-hand limit</strong></td><td>The value approached from larger inputs</td></tr>
+                <tr><td><strong>Limit at infinity</strong></td><td>The behavior of a function as the input becomes very large</td></tr>
+                <tr><td><strong>Continuity</strong></td><td>A function has no break at the point being examined</td></tr>
+                <tr><td><strong>Discontinuity</strong></td><td>A function has a break, jump, or hole</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 39. Important formulas to remember -->
+          <h3 class="mt-4">39. Important formulas to remember</h3>
+          <div class="formulas-grid">
+            <div class="formula-card-item">
+              <span class="card-formula-title">Cost</span>
+              <div class="card-formula-math">\[ C(x)=F+vx \]</div>
+            </div>
+            <div class="formula-card-item">
+              <span class="card-formula-title">Revenue</span>
+              <div class="card-formula-math">\[ R(x)=px \]</div>
+            </div>
+            <div class="formula-card-item">
+              <span class="card-formula-title">Profit</span>
+              <div class="card-formula-math">\[ \pi(x)=R(x)-C(x) \]</div>
+            </div>
+            <div class="formula-card-item">
+              <span class="card-formula-title">Market Equilibrium</span>
+              <div class="card-formula-math">\[ Q_d=Q_s \]</div>
+            </div>
+            <div class="formula-card-item">
+              <span class="card-formula-title">Break-Even Condition</span>
+              <div class="card-formula-math">\[ R(x)=C(x) \]</div>
+            </div>
+            <div class="formula-card-item">
+              <span class="card-formula-title">Limit</span>
+              <div class="card-formula-math">\[ \lim_{x\to a}f(x)=L \]</div>
+            </div>
+            <div class="formula-card-item col-span-2">
+              <span class="card-formula-title">Continuity Condition</span>
+              <div class="card-formula-math">\[ \lim_{x\to a}f(x)=f(a) \]</div>
+              <small class="text-muted">The continuity condition assumes that the function is defined at the point and that the limit exists.</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PART 12: PRACTICE EXERCISES -->
+      <section id="part12-practice" class="lesson-section">
+        <div class="section-header">
+          <span class="section-tag">Part 12</span>
+          <h2>Practice Exercises</h2>
+        </div>
+
+        <div class="content-card">
+          <div class="exercise-instructions">
+            <i class="fa-solid fa-pen-to-square"></i>
+            <div>
+              <h4>Test Your Problem-Solving Skills</h4>
+              <p>Try answering the following exercises before checking the solutions. Click <strong>"Reveal Solution"</strong> under any problem to check your work!</p>
+            </div>
+            <button id="toggle-all-solutions-btn" class="btn btn-secondary ml-auto"><i class="fa-solid fa-eye"></i> Reveal All Solutions</button>
+          </div>
+
+          <!-- Group A: Business functions -->
+          <h3 class="category-heading"><i class="fa-solid fa-briefcase"></i> A. Business functions</h3>
+
+          <!-- Problem 1 -->
+          <div class="practice-card" id="prob-1">
+            <div class="practice-head">
+              <span class="prob-tag">Problem 1</span>
+              <h4>Linear cost</h4>
+            </div>
+            <p>A business has a fixed cost of ₱8,000 and a variable cost of ₱25 per product.</p>
+            <ol type="a">
+              <li>Construct the cost function.</li>
+              <li>Find the total cost of producing 100 products.</li>
+            </ol>
+            <button class="toggle-sol-btn" data-target="sol-1"><i class="fa-solid fa-chevron-down"></i> Reveal Solution 1</button>
+            <div class="practice-solution" id="sol-1">
+              <h5>Solution 1: Linear cost</h5>
+              <p>Given: \[ F=8,000,\quad v=25 \]</p>
+              <p><strong>a. Cost function:</strong> \[ C(x)=8,000+25x \]</p>
+              <p><strong>b. Substitute 100:</strong></p>
+              <p>\[ C(100)=8,000+25(100) = 8,000+2,500 = \boxed{₱10,500} \]</p>
+            </div>
+          </div>
+
+          <!-- Problem 2 -->
+          <div class="practice-card" id="prob-2">
+            <div class="practice-head">
+              <span class="prob-tag">Problem 2</span>
+              <h4>Nonlinear cost</h4>
+            </div>
+            <p>A company has the cost function: \[ C(x)=1,000+10x+0.1x^2 \]</p>
+            <p>Find the cost of producing 20 units.</p>
+            <button class="toggle-sol-btn" data-target="sol-2"><i class="fa-solid fa-chevron-down"></i> Reveal Solution 2</button>
+            <div class="practice-solution" id="sol-2">
+              <h5>Solution 2: Nonlinear cost</h5>
+              <p>Given: \[ C(x)=1,000+10x+0.1x^2 \]</p>
+              <p>Substitute 20:</p>
+              <p>\[ C(20)=1,000+10(20)+0.1(20)^2 = 1,000+200+0.1(400) = 1,000+200+40 = \boxed{₱1,240} \]</p>
+            </div>
+          </div>
+
+          <!-- Problem 3 -->
+          <div class="practice-card" id="prob-3">
+            <div class="practice-head">
+              <span class="prob-tag">Problem 3</span>
+              <h4>Linear revenue</h4>
+            </div>
+            <p>A store sells bags for ₱450 each. Find its revenue if it sells 30 bags.</p>
+            <button class="toggle-sol-btn" data-target="sol-3"><i class="fa-solid fa-chevron-down"></i> Reveal Solution 3</button>
+            <div class="practice-solution" id="sol-3">
+              <h5>Solution 3: Linear revenue</h5>
+              <p>\[ R(x)=450x \]</p>
+              <p>\[ R(30)=450(30) = \boxed{₱13,500} \]</p>
+            </div>
+          </div>
+
+          <!-- Problem 4 -->
+          <div class="practice-card" id="prob-4">
+            <div class="practice-head">
+              <span class="prob-tag">Problem 4</span>
+              <h4>Nonlinear revenue</h4>
+            </div>
+            <p>A company uses the price function: \[ p(x)=100-2x \]</p>
+            <p>Find the revenue if it sells 20 products.</p>
+            <button class="toggle-sol-btn" data-target="sol-4"><i class="fa-solid fa-chevron-down"></i> Reveal Solution 4</button>
+            <div class="practice-solution" id="sol-4">
+              <h5>Solution 4: Nonlinear revenue</h5>
+              <p>Given: \[ p(x)=100-2x \]</p>
+              <p>First, find the price:</p>
+              <p>\[ p(20)=100-2(20)=100-40=60 \]</p>
+              <p>Then calculate revenue:</p>
+              <p>\[ R(20)=20(60) = \boxed{₱1,200} \]</p>
+            </div>
+          </div>
+
+          <!-- Problem 5 -->
+          <div class="practice-card" id="prob-5">
+            <div class="practice-head">
+              <span class="prob-tag">Problem 5</span>
+              <h4>Profit</h4>
+            </div>
+            <p>A company has:</p>
+            <p>\[ R(x)=100x \]</p>
+            <p>\[ C(x)=2,000+40x \]</p>
+            <p>Find the profit function and calculate the profit when 50 products are sold.</p>
+            <button class="toggle-sol-btn" data-target="sol-5"><i class="fa-solid fa-chevron-down"></i> Reveal Solution 5</button>
+            <div class="practice-solution" id="sol-5">
+              <h5>Solution 5: Profit</h5>
+              <p>Given: \[ R(x)=100x,\quad C(x)=2,000+40x \]</p>
+              <p>Apply the profit formula:</p>
+              <p>\[ \pi(x)=R(x)-C(x) = 100x-(2,000+40x) = 100x-2,000-40x \]</p>
+              <p>\[ \boxed{\pi(x)=60x-2,000} \]</p>
+              <p>Now substitute 50:</p>
+              <p>\[ \pi(50)=60(50)-2,000 = 3,000-2,000 = \boxed{₱1,000} \]</p>
+            </div>
+          </div>
+
+          <!-- Group B: Demand and supply -->
+          <h3 class="category-heading mt-4"><i class="fa-solid fa-scale-balanced"></i> B. Demand and supply</h3>
+
+          <!-- Problem 6 -->
+          <div class="practice-card" id="prob-6">
+            <div class="practice-head">
+              <span class="prob-tag">Problem 6</span>
+              <h4>Demand</h4>
+            </div>
+            <p>A product has the demand function: \[ Q_d=150-5P \]</p>
+            <p>Find the quantity demanded when the price is ₱20.</p>
+            <button class="toggle-sol-btn" data-target="sol-6"><i class="fa-solid fa-chevron-down"></i> Reveal Solution 6</button>
+            <div class="practice-solution" id="sol-6">
+              <h5>Solution 6: Demand</h5>
+              <p>\[ Q_d=150-5P \]</p>
+              <p>Substitute \(P=20\):</p>
+              <p>\[ Q_d=150-5(20) = 150-100 = \boxed{50\text{ units}} \]</p>
+            </div>
+          </div>
+
+          <!-- Problem 7 -->
+          <div class="practice-card" id="prob-7">
+            <div class="practice-head">
+              <span class="prob-tag">Problem 7</span>
+              <h4>Supply</h4>
+            </div>
+            <p>A supplier has the supply function: \[ Q_s=10+4P \]</p>
+            <p>Find the quantity supplied when the price is ₱15.</p>
+            <button class="toggle-sol-btn" data-target="sol-7"><i class="fa-solid fa-chevron-down"></i> Reveal Solution 7</button>
+            <div class="practice-solution" id="sol-7">
+              <h5>Solution 7: Supply</h5>
+              <p>\[ Q_s=10+4P \]</p>
+              <p>Substitute \(P=15\):</p>
+              <p>\[ Q_s=10+4(15) = 10+60 = \boxed{70\text{ units}} \]</p>
+            </div>
+          </div>
+
+          <!-- Problem 8 -->
+          <div class="practice-card" id="prob-8">
+            <div class="practice-head">
+              <span class="prob-tag">Problem 8</span>
+              <h4>Market equilibrium</h4>
+            </div>
+            <p>Given: \[ Q_d=120-2P \] \[ Q_s=20+3P \]</p>
+            <p>Find the equilibrium price and quantity.</p>
+            <button class="toggle-sol-btn" data-target="sol-8"><i class="fa-solid fa-chevron-down"></i> Reveal Solution 8</button>
+            <div class="practice-solution" id="sol-8">
+              <h5>Solution 8: Market equilibrium</h5>
+              <p>Given: \[ 120-2P=20+3P \]</p>
+              <p>Move the terms:</p>
+              <p>\[ 120-20=3P+2P \]</p>
+              <p>\[ 100=5P \implies \boxed{P=20} \]</p>
+              <p>Substitute into the demand function:</p>
+              <p>\[ Q_d=120-2(20)=120-40 \implies \boxed{Q=80} \]</p>
+              <p>The equilibrium price is <strong>₱20</strong> and the equilibrium quantity is <strong>80 units</strong>.</p>
+            </div>
+          </div>
+
+          <!-- Group C: Break-even analysis -->
+          <h3 class="category-heading mt-4"><i class="fa-solid fa-chart-pie"></i> C. Break-even analysis</h3>
+
+          <!-- Problem 9 -->
+          <div class="practice-card" id="prob-9">
+            <div class="practice-head">
+              <span class="prob-tag">Problem 9</span>
+              <h4>Break-even</h4>
+            </div>
+            <p>A business has:</p>
+            <ul>
+              <li>Fixed cost: ₱15,000</li>
+              <li>Variable cost: ₱50 per unit</li>
+              <li>Selling price: ₱100 per unit</li>
+            </ul>
+            <p>Determine the break-even quantity.</p>
+            <button class="toggle-sol-btn" data-target="sol-9"><i class="fa-solid fa-chevron-down"></i> Reveal Solution 9</button>
+            <div class="practice-solution" id="sol-9">
+              <h5>Solution 9: Break-even</h5>
+              <p>Given: \[ F=15,000,\quad v=50,\quad p=100 \]</p>
+              <p>Revenue: \[ R(x)=100x \]</p>
+              <p>Cost: \[ C(x)=15,000+50x \]</p>
+              <p>Set revenue equal to cost:</p>
+              <p>\[ 100x=15,000+50x \]</p>
+              <p>Subtract \(50x\):</p>
+              <p>\[ 50x=15,000 \]</p>
+              <p>Divide by 50: \[ \boxed{x=300} \]</p>
+              <p>The business must sell <strong>300 units</strong> to break even.</p>
+            </div>
+          </div>
+
+          <!-- Group D: Limits and continuity -->
+          <h3 class="category-heading mt-4"><i class="fa-solid fa-wave-pulse"></i> D. Limits and continuity</h3>
+
+          <!-- Problem 10 -->
+          <div class="practice-card" id="prob-10">
+            <div class="practice-head">
+              <span class="prob-tag">Problem 10</span>
+              <h4>Direct substitution</h4>
+            </div>
+            <p>Evaluate: \[ \lim_{x\to4}(2x+6) \]</p>
+            <button class="toggle-sol-btn" data-target="sol-10"><i class="fa-solid fa-chevron-down"></i> Reveal Solution 10</button>
+            <div class="practice-solution" id="sol-10">
+              <h5>Solution 10: Direct substitution</h5>
+              <p>\[ \lim_{x\to4}(2x+6) \]</p>
+              <p>Substitute 4: \[ =2(4)+6 = 8+6 = \boxed{14} \]</p>
+            </div>
+          </div>
+
+          <!-- Problem 11 -->
+          <div class="practice-card" id="prob-11">
+            <div class="practice-head">
+              <span class="prob-tag">Problem 11</span>
+              <h4>Polynomial limit</h4>
+            </div>
+            <p>Evaluate: \[ \lim_{x\to2}(x^2+3x+1) \]</p>
+            <button class="toggle-sol-btn" data-target="sol-11"><i class="fa-solid fa-chevron-down"></i> Reveal Solution 11</button>
+            <div class="practice-solution" id="sol-11">
+              <h5>Solution 11: Polynomial limit</h5>
+              <p>\[ \lim_{x\to2}(x^2+3x+1) \]</p>
+              <p>Substitute 2: \[ =(2)^2+3(2)+1 = 4+6+1 = \boxed{11} \]</p>
+            </div>
+          </div>
+
+          <!-- Problem 12 -->
+          <div class="practice-card" id="prob-12">
+            <div class="practice-head">
+              <span class="prob-tag">Problem 12</span>
+              <h4>Factoring</h4>
+            </div>
+            <p>Evaluate: \[ \lim_{x\to4}\frac{x^2-16}{x-4} \]</p>
+            <button class="toggle-sol-btn" data-target="sol-12"><i class="fa-solid fa-chevron-down"></i> Reveal Solution 12</button>
+            <div class="practice-solution" id="sol-12">
+              <h5>Solution 12: Factoring</h5>
+              <p>\[ \lim_{x\to4}\frac{x^2-16}{x-4} \]</p>
+              <p>Factor the numerator: \[ =\lim_{x\to4}\frac{(x-4)(x+4)}{x-4} \]</p>
+              <p>Cancel the common factor: \[ =\lim_{x\to4}(x+4) \]</p>
+              <p>Substitute 4: \[ =4+4 = \boxed{8} \]</p>
+            </div>
+          </div>
+
+          <!-- Problem 13 -->
+          <div class="practice-card" id="prob-13">
+            <div class="practice-head">
+              <span class="prob-tag">Problem 13</span>
+              <h4>Continuity</h4>
+            </div>
+            <p>Given: \[ f(x)=3x+5 \]</p>
+            <p>Determine whether the function is continuous at \(x=2\).</p>
+            <button class="toggle-sol-btn" data-target="sol-13"><i class="fa-solid fa-chevron-down"></i> Reveal Solution 13</button>
+            <div class="practice-solution" id="sol-13">
+              <h5>Solution 13: Continuity</h5>
+              <p>Given: \[ f(x)=3x+5 \]</p>
+              <p>Find the function value: \[ f(2)=3(2)+5=11 \]</p>
+              <p>Find the limit: \[ \lim_{x\to2}(3x+5)=11 \]</p>
+              <p>Compare: \[ \lim_{x\to2}f(x)=f(2) \]</p>
+              <p>Both equal 11.</p>
+              <p class="final-highlight">\[ \boxed{\text{The function is continuous at }x=2.} \]</p>
+            </div>
+          </div>
+
+          <!-- Problem 14 -->
+          <div class="practice-card" id="prob-14">
+            <div class="practice-head">
+              <span class="prob-tag">Problem 14</span>
+              <h4>Discontinuity</h4>
+            </div>
+            <p>Given:</p>
+            <div class="formula-box">
+              \[ f(x)= \begin{cases} 50, & x<5\\ 80, & x\geq5 \end{cases} \]
+            </div>
+            <p>Determine whether the function is continuous at \(x=5\).</p>
+            <button class="toggle-sol-btn" data-target="sol-14"><i class="fa-solid fa-chevron-down"></i> Reveal Solution 14</button>
+            <div class="practice-solution" id="sol-14">
+              <h5>Solution 14: Discontinuity</h5>
+              <p>Left-hand limit: \[ \lim_{x\to5^-}f(x)=50 \]</p>
+              <p>Right-hand limit: \[ \lim_{x\to5^+}f(x)=80 \]</p>
+              <p>Because: \[ 50\ne80 \]</p>
+              <p>The two-sided limit does not exist.</p>
+              <p class="final-highlight">\[ \boxed{\text{The function is discontinuous at }x=5.} \]</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PART 13: COMPLETE ANSWER KEY REFERENCE -->
+      <section id="part13-solutions" class="lesson-section">
+        <div class="section-header">
+          <span class="section-tag">Part 13</span>
+          <h2>Answer Key with Solutions (Full Reference)</h2>
+        </div>
+        <div class="content-card">
+          <p>This reference section compiles all detailed solutions from Part 12 in one unified view for quick study and printing.</p>
+          <div class="answer-key-grid">
+            <div class="ak-item"><strong>1. Linear Cost:</strong> a. \(C(x)=8,000+25x\), b. \(C(100)=₱10,500\)</div>
+            <div class="ak-item"><strong>2. Nonlinear Cost:</strong> \(C(20)=1,000+200+40=₱1,240\)</div>
+            <div class="ak-item"><strong>3. Linear Revenue:</strong> \(R(30)=450(30)=₱13,500\)</div>
+            <div class="ak-item"><strong>4. Nonlinear Revenue:</strong> \(p(20)=60 \implies R(20)=20(60)=₱1,200\)</div>
+            <div class="ak-item"><strong>5. Profit:</strong> \(\pi(x)=60x-2,000 \implies \pi(50)=₱1,000\)</div>
+            <div class="ak-item"><strong>6. Demand:</strong> \(Q_d=150-5(20)=50\text{ units}\)</div>
+            <div class="ak-item"><strong>7. Supply:</strong> \(Q_s=10+4(15)=70\text{ units}\)</div>
+            <div class="ak-item"><strong>8. Equilibrium:</strong> \(P=₱20,\quad Q=80\text{ units}\)</div>
+            <div class="ak-item"><strong>9. Break-Even:</strong> \(50x=15,000 \implies x=300\text{ units}\)</div>
+            <div class="ak-item"><strong>10. Direct Substitution:</strong> \(\lim_{x\to4}(2x+6)=14\)</div>
+            <div class="ak-item"><strong>11. Polynomial Limit:</strong> \(\lim_{x\to2}(x^2+3x+1)=11\)</div>
+            <div class="ak-item"><strong>12. Factoring Limit:</strong> \(\lim_{x\to4}(x+4)=8\)</div>
+            <div class="ak-item"><strong>13. Continuity:</strong> Limit = \(f(2) = 11 \implies\) Continuous at \(x=2\)</div>
+            <div class="ak-item"><strong>14. Discontinuity:</strong> \(50 \ne 80 \implies\) Discontinuous at \(x=5\) (jump)</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PART 14: FINAL REVIEW AND KEY TAKEAWAYS -->
+      <section id="part14-review" class="lesson-section">
+        <div class="section-header">
+          <span class="section-tag">Part 14</span>
+          <h2>Final Review and Key Takeaways</h2>
+        </div>
+
+        <div class="content-card">
+          <p class="lead-text">Before moving to the next module, make sure you understand these important concepts:</p>
+
+          <div class="takeaways-grid">
+            <div class="takeaway-card">
+              <div class="takeaway-num">1</div>
+              <div>
+                <h4>Business functions</h4>
+                <p>A business function describes the relationship between two quantities, such as production and cost or sales and revenue.</p>
+              </div>
+            </div>
+            <div class="takeaway-card">
+              <div class="takeaway-num">2</div>
+              <div>
+                <h4>Cost functions</h4>
+                <p>Cost functions calculate how much a business spends to produce products. Remember the difference between fixed and variable costs.</p>
+              </div>
+            </div>
+            <div class="takeaway-card">
+              <div class="takeaway-num">3</div>
+              <div>
+                <h4>Revenue functions</h4>
+                <p>Revenue is the money a business earns from selling its products or services before expenses are deducted.</p>
+              </div>
+            </div>
+            <div class="takeaway-card">
+              <div class="takeaway-num">4</div>
+              <div>
+                <h4>Profit functions</h4>
+                <p>Profit is calculated by subtracting total cost from total revenue.</p>
+              </div>
+            </div>
+            <div class="takeaway-card">
+              <div class="takeaway-num">5</div>
+              <div>
+                <h4>Demand and supply</h4>
+                <p>Demand describes what customers are willing to buy. Supply describes what sellers are willing to offer.</p>
+              </div>
+            </div>
+            <div class="takeaway-card">
+              <div class="takeaway-num">6</div>
+              <div>
+                <h4>Market equilibrium</h4>
+                <p>Equilibrium occurs when the quantity demanded equals the quantity supplied.</p>
+              </div>
+            </div>
+            <div class="takeaway-card">
+              <div class="takeaway-num">7</div>
+              <div>
+                <h4>Break-even analysis</h4>
+                <p>Break-even is the point where total revenue equals total cost. The business has neither profit nor loss.</p>
+              </div>
+            </div>
+            <div class="takeaway-card">
+              <div class="takeaway-num">8</div>
+              <div>
+                <h4>Limits</h4>
+                <p>A limit tells us the value that a function approaches as its input approaches a particular number.</p>
+              </div>
+            </div>
+            <div class="takeaway-card">
+              <div class="takeaway-num">9</div>
+              <div>
+                <h4>Continuity</h4>
+                <p>A function is continuous at a point when its limit exists and equals its actual function value.</p>
+              </div>
+            </div>
+            <div class="takeaway-card">
+              <div class="takeaway-num">10</div>
+              <div>
+                <h4>Discontinuity</h4>
+                <p>A function is discontinuous when a break, jump, or hole occurs at the point being examined.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Suggested Study Guide -->
+          <div class="study-guide-box mt-4">
+            <div class="study-guide-header">
+              <i class="fa-solid fa-map-location-dot"></i>
+              <h3>Suggested Study Guide</h3>
+            </div>
+            <p>To master Module 1, study the topics in this order:</p>
+            <div class="study-steps-timeline">
+              <div class="timeline-item">
+                <span class="timeline-badge">1</span>
+                <div><strong>First:</strong> Understand functions, variables, and mathematical symbols.</div>
+              </div>
+              <div class="timeline-item">
+                <span class="timeline-badge">2</span>
+                <div><strong>Second:</strong> Practice creating cost, revenue, and profit functions.</div>
+              </div>
+              <div class="timeline-item">
+                <span class="timeline-badge">3</span>
+                <div><strong>Third:</strong> Understand demand and supply and practice solving equilibrium problems.</div>
+              </div>
+              <div class="timeline-item">
+                <span class="timeline-badge">4</span>
+                <div><strong>Fourth:</strong> Practice break-even problems until you can solve them without looking at the examples.</div>
+              </div>
+              <div class="timeline-item">
+                <span class="timeline-badge">5</span>
+                <div><strong>Fifth:</strong> Master limits through direct substitution and factoring.</div>
+              </div>
+              <div class="timeline-item">
+                <span class="timeline-badge">6</span>
+                <div><strong>Finally:</strong> Practice checking continuity using left-hand limits, right-hand limits, and the actual function value.</div>
+              </div>
+            </div>
+
+            <div class="most-important-box mt-3">
+              <i class="fa-solid fa-gem"></i>
+              <div>
+                <strong>The most important lesson:</strong>
+                <p>Business calculus is not just about solving equations. It is about understanding how mathematical relationships explain real business situations and help managers make better decisions.</p>
+              </div>
+            </div>
+            <p class="text-center font-bold text-muted mt-3">End of Module 1 – Business Functions & Limits</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- KNOWLEDGE CHECK QUIZ -->
+      <section id="quiz-section" class="lesson-section">
+        <div class="section-header">
+          <span class="section-tag">Assessment</span>
+          <h2>Final Assessment: Test Your Understanding</h2>
+        </div>
+
+        <div class="content-card quiz-card">
+          <div class="quiz-header-bar">
+            <div>
+              <h3>Module 1 knowledge check</h3>
+              <p class="quiz-status" id="quiz-progress-text">0 of 8 answered</p>
+            </div>
+            <div class="quiz-score-badge" id="quiz-score-display" style="display: none;">
+              Score: <span id="quiz-score-num">0</span> / 8
+            </div>
+          </div>
+
+          <form id="knowledge-check-form">
+            <!-- Question 1 -->
+            <div class="quiz-q" data-q="1" data-correct="Fixed cost">
+              <p class="q-title">1. Which cost stays the same regardless of production quantity within the relevant range?</p>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q1" value="Variable cost"><span>Variable cost</span></label>
+                <label class="q-opt"><input type="radio" name="q1" value="Fixed cost"><span>Fixed cost</span></label>
+                <label class="q-opt"><input type="radio" name="q1" value="Total revenue"><span>Total revenue</span></label>
+                <label class="q-opt"><input type="radio" name="q1" value="Profit"><span>Profit</span></label>
+              </div>
+              <div class="q-feedback" id="fb-1"></div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="quiz-q" data-q="2" data-correct="₱1,000">
+              <p class="q-title">2. A product sells for ₱50 each. What is the revenue from selling 20 products?</p>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q2" value="₱500"><span>₱500</span></label>
+                <label class="q-opt"><input type="radio" name="q2" value="₱750"><span>₱750</span></label>
+                <label class="q-opt"><input type="radio" name="q2" value="₱1,000"><span>₱1,000</span></label>
+                <label class="q-opt"><input type="radio" name="q2" value="₱1,500"><span>₱1,500</span></label>
+              </div>
+              <div class="q-feedback" id="fb-2"></div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="quiz-q" data-q="3" data-correct="Revenue minus cost">
+              <p class="q-title">3. Which formula represents profit?</p>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q3" value="Cost minus revenue"><span>Cost minus revenue</span></label>
+                <label class="q-opt"><input type="radio" name="q3" value="Revenue plus cost"><span>Revenue plus cost</span></label>
+                <label class="q-opt"><input type="radio" name="q3" value="Revenue minus cost"><span>Revenue minus cost</span></label>
+                <label class="q-opt"><input type="radio" name="q3" value="Fixed cost plus variable cost"><span>Fixed cost plus variable cost</span></label>
+              </div>
+              <div class="q-feedback" id="fb-3"></div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="quiz-q" data-q="4" data-correct="It generally decreases">
+              <p class="q-title">4. What happens to quantity demanded when price increases, according to the usual law of demand?</p>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q4" value="It generally increases"><span>It generally increases</span></label>
+                <label class="q-opt"><input type="radio" name="q4" value="It generally decreases"><span>It generally decreases</span></label>
+                <label class="q-opt"><input type="radio" name="q4" value="It always stays the same"><span>It always stays the same</span></label>
+                <label class="q-opt"><input type="radio" name="q4" value="It becomes zero"><span>It becomes zero</span></label>
+              </div>
+              <div class="q-feedback" id="fb-4"></div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="quiz-q" data-q="5" data-correct="Revenue equals cost">
+              <p class="q-title">5. What is true at the break-even point?</p>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q5" value="Revenue is greater than cost"><span>Revenue is greater than cost</span></label>
+                <label class="q-opt"><input type="radio" name="q5" value="Cost is greater than revenue"><span>Cost is greater than revenue</span></label>
+                <label class="q-opt"><input type="radio" name="q5" value="Revenue equals cost"><span>Revenue equals cost</span></label>
+                <label class="q-opt"><input type="radio" name="q5" value="Profit is at its maximum"><span>Profit is at its maximum</span></label>
+              </div>
+              <div class="q-feedback" id="fb-5"></div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="quiz-q" data-q="6" data-correct="The value a function approaches">
+              <p class="q-title">6. What does a limit describe?</p>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q6" value="Only the exact value of a function"><span>Only the exact value of a function</span></label>
+                <label class="q-opt"><input type="radio" name="q6" value="The value a function approaches"><span>The value a function approaches</span></label>
+                <label class="q-opt"><input type="radio" name="q6" value="The maximum business profit"><span>The maximum business profit</span></label>
+                <label class="q-opt"><input type="radio" name="q6" value="The fixed cost of a business"><span>The fixed cost of a business</span></label>
+              </div>
+              <div class="q-feedback" id="fb-6"></div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="quiz-q" data-q="7" data-correct="Simplify the expression, often by factoring">
+              <p class="q-title">7. What should you try when direct substitution gives 0/0 in a limit problem?</p>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q7" value="Immediately say the limit is zero"><span>Immediately say the limit is zero</span></label>
+                <label class="q-opt"><input type="radio" name="q7" value="Ignore the denominator"><span>Ignore the denominator</span></label>
+                <label class="q-opt"><input type="radio" name="q7" value="Simplify the expression, often by factoring"><span>Simplify the expression, often by factoring</span></label>
+                <label class="q-opt"><input type="radio" name="q7" value="Always use multiplication"><span>Always use multiplication</span></label>
+              </div>
+              <div class="q-feedback" id="fb-7"></div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="quiz-q" data-q="8" data-correct="When the limit exists and equals the function value">
+              <p class="q-title">8. When is a function continuous at x = a?</p>
+              <div class="q-options">
+                <label class="q-opt"><input type="radio" name="q8" value="When its value is negative"><span>When its value is negative</span></label>
+                <label class="q-opt"><input type="radio" name="q8" value="When the limit exists and equals the function value"><span>When the limit exists and equals the function value</span></label>
+                <label class="q-opt"><input type="radio" name="q8" value="When the graph is always a straight line"><span>When the graph is always a straight line</span></label>
+                <label class="q-opt"><input type="radio" name="q8" value="When its output is zero"><span>When its output is zero</span></label>
+              </div>
+              <div class="q-feedback" id="fb-8"></div>
+            </div>
+
+            <div class="quiz-actions">
+              <button type="submit" class="btn btn-primary" id="submit-quiz-btn"><i class="fa-solid fa-paper-plane"></i> Submit answers</button>
+              <button type="button" class="btn btn-outline" id="reset-quiz-btn"><i class="fa-solid fa-rotate-left"></i> Reset Quiz</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ONE-PAGE INFOGRAPHIC POSTER SECTION -->
+      <section id="infographic-section" class="lesson-section">
+        <div class="section-header">
+          <span class="section-tag section-tag-gold"><i class="fa-solid fa-star"></i> Visual Cheatsheet</span>
+          <h2>One-Page Infographic Poster</h2>
+        </div>
+
+        <div class="infographic-actions-bar">
+          <p>A beautifully synthesized, printable one-page visual study roadmap for Module 1.</p>
+          <div class="btn-group">
+            <button class="btn btn-primary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print / Save PDF</button>
+            <button class="btn btn-secondary" id="infographic-expand-btn"><i class="fa-solid fa-expand"></i> Fullscreen Poster</button>
+          </div>
+        </div>
+
+        <!-- The Printable Poster Card -->
+        <div class="infographic-poster" id="infographic-poster">
+          <!-- Poster Header -->
+          <div class="poster-header">
+            <div class="poster-brand">
+              <i class="fa-solid fa-chart-line-up"></i>
+              <span>MATH ELECTIVE &bull; CALCULUS FOR BUSINESS</span>
+            </div>
+            <h1 class="poster-title">MODULE 1: BUSINESS FUNCTIONS & LIMITS</h1>
+            <p class="poster-tagline">Visual Concept Roadmap &bull; Key Formulas &bull; Business Decision Framework</p>
+          </div>
+
+          <!-- 6-Panel Poster Grid -->
+          <div class="poster-grid">
+            <!-- Panel 1: Cost Functions -->
+            <div class="poster-panel panel-blue">
+              <div class="panel-head">
+                <i class="fa-solid fa-coins"></i>
+                <h3>1. COST STRUCTURE</h3>
+              </div>
+              <div class="panel-formula">
+                \[ C(x) = F + vx \]
+              </div>
+              <div class="panel-body">
+                <div class="poster-bullet"><strong>Fixed Cost (\(F\)):</strong> Rent, permits, insurance (constant regardless of output).</div>
+                <div class="poster-bullet"><strong>Variable Cost (\(vx\)):</strong> Materials, packaging, labor (\(v \times x\)).</div>
+                <div class="poster-subtag">Nonlinear Model: \(C(x) = F + ax + bx^2\) (bulk discounts, overtime fatigue).</div>
+              </div>
+            </div>
+
+            <!-- Panel 2: Revenue Functions -->
+            <div class="poster-panel panel-green">
+              <div class="panel-head">
+                <i class="fa-solid fa-cash-register"></i>
+                <h3>2. REVENUE DYNAMICS</h3>
+              </div>
+              <div class="panel-formula">
+                \[ R(x) = px \]
+              </div>
+              <div class="panel-body">
+                <div class="poster-bullet"><strong>Linear:</strong> Constant price \(p\) per unit sold.</div>
+                <div class="poster-bullet"><strong>Nonlinear:</strong> Price drops as volume rises:
+                  \[ p(x) = a - bx \implies R(x) = ax - bx^2 \]
+                </div>
+                <div class="poster-tip">Peak revenue occurs at vertex before price discounts reduce gains.</div>
+              </div>
+            </div>
+
+            <!-- Panel 3: Profit & Break-Even -->
+            <div class="poster-panel panel-purple">
+              <div class="panel-head">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <h3>3. PROFIT & BREAK-EVEN</h3>
+              </div>
+              <div class="panel-formula">
+                \[ \pi(x) = R(x) - C(x) \]
+                \[ Q^* = \frac{F}{p - v} \]
+              </div>
+              <div class="panel-body">
+                <div class="poster-bullet"><strong>Break-Even:</strong> \(R(x) = C(x) \implies \pi(x) = 0\).</div>
+                <div class="poster-bullet"><strong>Contribution Margin:</strong> \(p - v\) pays off fixed costs first.</div>
+                <div class="poster-bullet">\(x < Q^* \to\) <strong>Loss</strong> &bull; \(x > Q^* \to\) <strong>Profit</strong></div>
+              </div>
+            </div>
+
+            <!-- Panel 4: Demand & Supply Equilibrium -->
+            <div class="poster-panel panel-orange">
+              <div class="panel-head">
+                <i class="fa-solid fa-arrows-split-up-and-left"></i>
+                <h3>4. MARKET EQUILIBRIUM</h3>
+              </div>
+              <div class="panel-formula">
+                \[ Q_d = Q_s \]
+              </div>
+              <div class="panel-body">
+                <div class="poster-bullet"><strong>Demand (\(Q_d = a - bP\)):</strong> Slopes downward (\(P \uparrow \implies Q_d \downarrow\)).</div>
+                <div class="poster-bullet"><strong>Supply (\(Q_s = c + dP\)):</strong> Slopes upward (\(P \uparrow \implies Q_s \uparrow\)).</div>
+                <div class="poster-subtag">Equilibrium point \((Q_e, P_e)\) clears the market with no shortage or surplus.</div>
+              </div>
+            </div>
+
+            <!-- Panel 5: Limits in Business -->
+            <div class="poster-panel panel-red">
+              <div class="panel-head">
+                <i class="fa-solid fa-infinity"></i>
+                <h3>5. LIMITS IN BUSINESS</h3>
+              </div>
+              <div class="panel-formula">
+                \[ \lim_{x \to a} f(x) = L \]
+              </div>
+              <div class="panel-body">
+                <div class="poster-bullet"><strong>Concept:</strong> Value approached as input gets infinitesimally close.</div>
+                <div class="poster-bullet"><strong>Direct Substitution:</strong> Plug in \(a\).</div>
+                <div class="poster-bullet"><strong>If \(\frac{0}{0}\) (Indeterminate):</strong> Factor, cancel, and re-substitute!</div>
+                <div class="poster-bullet"><strong>At Infinity:</strong> Fixed costs dilute: \(\lim_{x \to \infty} (20 + \frac{3000}{x}) = ₱20\).</div>
+              </div>
+            </div>
+
+            <!-- Panel 6: Continuity Checklist -->
+            <div class="poster-panel panel-teal">
+              <div class="panel-head">
+                <i class="fa-solid fa-wave-pulse"></i>
+                <h3>6. CONTINUITY CHECKLIST</h3>
+              </div>
+              <div class="panel-formula">
+                \[ \lim_{x \to a} f(x) = f(a) \]
+              </div>
+              <div class="panel-body">
+                <div class="checklist-grid">
+                  <div class="check-row"><i class="fa-solid fa-circle-check"></i> <strong>1. \(f(a)\) exists</strong> (defined, no hole)</div>
+                  <div class="check-row"><i class="fa-solid fa-circle-check"></i> <strong>2. \(\lim_{x \to a} f(x)\) exists</strong> (Left = Right)</div>
+                  <div class="check-row"><i class="fa-solid fa-circle-check"></i> <strong>3. Limit = Value</strong> (seamless graph)</div>
+                </div>
+                <div class="poster-tip mt-2">Discontinuous: Wholesale price tiers with sudden jumps.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Poster Footer Summary Bar -->
+          <div class="poster-footer">
+            <div class="footer-core-rule">
+              <i class="fa-solid fa-lightbulb"></i>
+              <span><strong>The Manager's Rule:</strong> Mathematical models turn business uncertainty into actionable decisions for production, pricing, and profitability.</span>
+            </div>
+            <div class="poster-meta">
+              <span>Math Elective: Calculus for Business &bull; Module 1 Reference Poster</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="footer-content">
+          <p><strong>Math Elective: Calculus for Business</strong> &bull; Module 1 – Business Functions & Limits</p>
+          <p class="footer-subtext">Complete beginner-friendly lesson &bull; Step-by-step explanations &bull; Worked business examples &bull; Practice exercises with solutions &bull; One-page infographic</p>
+          <div class="footer-links">
+            <a href="#intro">Introduction</a> &bull;
+            <a href="#part1-functions">Functions</a> &bull;
+            <a href="#part7-breakeven">Break-Even Simulator</a> &bull;
+            <a href="#part12-practice">Practice</a> &bull;
+            <a href="#quiz-section">Quiz</a> &bull;
+            <a href="#infographic-section">Infographic</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Quick Formula Modal -->
+  <div class="modal-backdrop" id="formula-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-square-root-variable"></i> Quick Formula Reference</h3>
+        <button class="icon-btn" id="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <table class="styled-table">
+          <thead>
+            <tr><th>Concept</th><th>Formula</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Total Cost</td><td>\(C(x)=F+vx\)</td></tr>
+            <tr><td>Revenue</td><td>\(R(x)=px\) or \(x \cdot p(x)\)</td></tr>
+            <tr><td>Profit</td><td>\(\pi(x)=R(x)-C(x)\)</td></tr>
+            <tr><td>Break-Even Point</td><td>\(R(x)=C(x) \implies Q^* = \frac{F}{p-v}\)</td></tr>
+            <tr><td>Market Equilibrium</td><td>\(Q_d = Q_s\)</td></tr>
+            <tr><td>Demand / Supply</td><td>\(Q_d = a - bP,\quad Q_s = c + dP\)</td></tr>
+            <tr><td>Limit Definition</td><td>\(\lim_{x \to a} f(x) = L\)</td></tr>
+            <tr><td>Continuity Test</td><td>\(f(a)\text{ exists},\quad \lim_{x\to a}f(x)\text{ exists},\quad \lim_{x\to a}f(x)=f(a)\)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
