@@ -1,6 +1,6 @@
 /* ========================================================
-   CALCULUS FOR BUSINESS - MODULE 1 SCRIPT
-   Interactive Simulators, Quiz Engine & Math Rendering
+   CALCULUS FOR BUSINESS - MODULE 1 (BEGINNER EDITION) SCRIPT
+   Interactive Simulators, 16-Problem Practice & Quiz Engine
    ======================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. Initialize Interactive Break-Even Simulator & Chart
   initBreakEvenSimulator();
 
-  // 5. Initialize Practice Solutions Toggles
+  // 5. Initialize Practice Solutions Toggles (1 to 16)
   initPracticeToggles();
 
   // 6. Initialize Module 1 Knowledge Check Quiz
@@ -54,26 +54,28 @@ function renderMathInDocument(targetElement = document.body) {
    ======================================================== */
 function initThemeToggle() {
   const themeBtn = document.getElementById('theme-toggle-btn');
-  const savedTheme = localStorage.getItem('agy-calc-theme') || 'light';
+  const savedTheme = localStorage.getItem('agy-calc-theme-v2') || 'light';
   
   if (savedTheme === 'dark') {
     document.body.classList.replace('light-theme', 'dark-theme');
-    themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+    if (themeBtn) themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
   }
 
-  themeBtn.addEventListener('click', () => {
-    if (document.body.classList.contains('light-theme')) {
-      document.body.classList.replace('light-theme', 'dark-theme');
-      themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-      localStorage.setItem('agy-calc-theme', 'dark');
-      updateChartColors();
-    } else {
-      document.body.classList.replace('dark-theme', 'light-theme');
-      themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-      localStorage.setItem('agy-calc-theme', 'light');
-      updateChartColors();
-    }
-  });
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      if (document.body.classList.contains('light-theme')) {
+        document.body.classList.replace('light-theme', 'dark-theme');
+        themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+        localStorage.setItem('agy-calc-theme-v2', 'dark');
+        updateChartColors();
+      } else {
+        document.body.classList.replace('dark-theme', 'light-theme');
+        themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+        localStorage.setItem('agy-calc-theme-v2', 'light');
+        updateChartColors();
+      }
+    });
+  }
 }
 
 /* ========================================================
@@ -131,36 +133,40 @@ function initBreakEvenSimulator() {
   const formulaOutput = document.getElementById('sim-math-display');
 
   // Presets
-  const btnBurger = document.getElementById('preset-burger');
-  const btnTextbook = document.getElementById('preset-textbook');
-  const btnBakery = document.getElementById('preset-bakery');
+  const btnMilkTea = document.getElementById('preset-milktea');
+  const btnPractice10 = document.getElementById('preset-practice10');
+  const btnNotebook = document.getElementById('preset-notebook');
+
+  if (!inputF || !inputV || !inputP) return;
 
   function updateSimulator() {
     let F = parseFloat(inputF.value);
     let v = parseFloat(inputV.value);
     let p = parseFloat(inputP.value);
 
-    // Guard against price <= variable cost
+    // Guard: price must exceed variable cost for positive break-even
     if (p <= v) {
-      p = v + 1;
+      p = v + 5;
       inputP.value = p;
     }
 
-    valF.textContent = `₱${F.toLocaleString()}`;
-    valV.textContent = `₱${v.toLocaleString()}`;
-    valP.textContent = `₱${p.toLocaleString()}`;
+    if (valF) valF.textContent = `₱${F.toLocaleString()}`;
+    if (valV) valV.textContent = `₱${v.toLocaleString()}`;
+    if (valP) valP.textContent = `₱${p.toLocaleString()}`;
 
     const cm = p - v;
     const qStar = Math.round(F / cm);
     const rStar = qStar * p;
 
-    statCM.textContent = `₱${cm.toFixed(2)}`;
-    statQStar.textContent = `${qStar.toLocaleString()} units`;
-    statRStar.textContent = `₱${rStar.toLocaleString()}`;
+    if (statCM) statCM.textContent = `₱${cm.toFixed(2)}`;
+    if (statQStar) statQStar.textContent = `${qStar.toLocaleString()} units`;
+    if (statRStar) statRStar.textContent = `₱${rStar.toLocaleString()}`;
 
     // Update dynamic formula KaTeX
-    formulaOutput.innerHTML = `\\[ Q^* = \\frac{F}{p - v} = \\frac{${F.toLocaleString()}}{${p} - ${v}} = \\mathbf{${qStar.toLocaleString()}} \\text{ units} \\]`;
-    renderMathInDocument(formulaOutput);
+    if (formulaOutput) {
+      formulaOutput.innerHTML = `\\[ Q = \\frac{F}{p - v} = \\frac{${F.toLocaleString()}}{${p} - ${v}} = \\mathbf{${qStar.toLocaleString()}} \\text{ products} \\]`;
+      renderMathInDocument(formulaOutput);
+    }
 
     updateChartData(F, v, p, qStar);
   }
@@ -171,32 +177,32 @@ function initBreakEvenSimulator() {
   });
 
   // Preset Handlers
-  if (btnBurger) {
-    btnBurger.addEventListener('click', () => {
-      setActivePreset(btnBurger);
-      inputF.value = 12000;
-      inputV.value = 45;
-      inputP.value = 75;
+  if (btnMilkTea) {
+    btnMilkTea.addEventListener('click', () => {
+      setActivePreset(btnMilkTea);
+      inputF.value = 3000;
+      inputV.value = 50;
+      inputP.value = 80;
       updateSimulator();
     });
   }
 
-  if (btnTextbook) {
-    btnTextbook.addEventListener('click', () => {
-      setActivePreset(btnTextbook);
-      inputF.value = 6000;
-      inputV.value = 15;
-      inputP.value = 35;
+  if (btnPractice10) {
+    btnPractice10.addEventListener('click', () => {
+      setActivePreset(btnPractice10);
+      inputF.value = 4000;
+      inputV.value = 60;
+      inputP.value = 100;
       updateSimulator();
     });
   }
 
-  if (btnBakery) {
-    btnBakery.addEventListener('click', () => {
-      setActivePreset(btnBakery);
+  if (btnNotebook) {
+    btnNotebook.addEventListener('click', () => {
+      setActivePreset(btnNotebook);
       inputF.value = 2000;
       inputV.value = 30;
-      inputP.value = 100;
+      inputP.value = 70;
       updateSimulator();
     });
   }
@@ -252,7 +258,7 @@ function buildChart() {
           fill: false
         },
         {
-          label: 'Break-Even Point (Q*)',
+          label: 'Break-Even Point (Q)',
           data: [],
           borderColor: '#2563eb',
           backgroundColor: '#2563eb',
@@ -302,7 +308,7 @@ function buildChart() {
 function updateChartData(F, v, p, qStar) {
   if (!breakEvenChartInstance) return;
 
-  const maxUnits = Math.max(qStar * 2, 200);
+  const maxUnits = Math.max(qStar * 2, 150);
   const steps = 10;
   const stepSize = Math.ceil(maxUnits / steps);
 
@@ -319,8 +325,6 @@ function updateChartData(F, v, p, qStar) {
   }
 
   // BEP Point coordinate
-  const bepPoint = labels.map(x => (x === qStar ? p * qStar : null));
-  // If qStar doesn't fall on exact step, include it
   let bepData = [];
   labels.forEach(x => {
     if (Math.abs(x - qStar) < stepSize / 2) {
@@ -357,7 +361,7 @@ function updateChartColors() {
 }
 
 /* ========================================================
-   5. PRACTICE EXERCISES & SOLUTIONS ACCORDION
+   5. PRACTICE EXERCISES & SOLUTIONS ACCORDION (1 to 16)
    ======================================================== */
 function initPracticeToggles() {
   const toggleBtns = document.querySelectorAll('.toggle-sol-btn');
@@ -381,7 +385,6 @@ function initPracticeToggles() {
 
   // Reveal All / Hide All button
   const toggleAllBtn = document.getElementById('toggle-all-solutions-btn');
-  const toggleAllTopBtn = document.getElementById('toggle-all-solutions-top');
 
   function toggleAll() {
     const allSolutions = document.querySelectorAll('.practice-solution');
@@ -405,12 +408,6 @@ function initPracticeToggles() {
   }
 
   if (toggleAllBtn) toggleAllBtn.addEventListener('click', toggleAll);
-  if (toggleAllTopBtn) {
-    toggleAllTopBtn.addEventListener('click', () => {
-      const practiceSec = document.getElementById('part12-practice');
-      if (practiceSec) practiceSec.scrollIntoView({ behavior: 'smooth' });
-    });
-  }
 }
 
 /* ========================================================
@@ -422,6 +419,8 @@ function initQuiz() {
   const scoreDisplay = document.getElementById('quiz-score-display');
   const scoreNum = document.getElementById('quiz-score-num');
   const resetBtn = document.getElementById('reset-quiz-btn');
+
+  if (!form) return;
 
   const questions = document.querySelectorAll('.quiz-q');
   const totalQ = questions.length;
@@ -435,7 +434,7 @@ function initQuiz() {
         answered++;
       }
     });
-    progressText.textContent = `${answered} of ${totalQ} answered`;
+    if (progressText) progressText.textContent = `${answered} of ${totalQ} answered`;
   });
 
   // Submit Evaluation
@@ -449,44 +448,48 @@ function initQuiz() {
       const feedbackEl = document.getElementById(`fb-${qNum}`);
       const selected = form.querySelector(`input[name="q${qNum}"]:checked`);
 
+      if (!feedbackEl) return;
+
       if (!selected) {
         feedbackEl.className = 'q-feedback incorrect';
         feedbackEl.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i> Not answered yet. Correct answer: <strong>${correctVal}</strong>`;
-      } else if (selected.value === correctVal) {
+      } else if (selected.value.trim() === correctVal.trim()) {
         score++;
         feedbackEl.className = 'q-feedback correct';
         feedbackEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> Correct! <strong>${correctVal}</strong>`;
       } else {
         feedbackEl.className = 'q-feedback incorrect';
-        feedbackEl.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Incorrect. You selected: "${selected.value}". Correct answer is: <strong>${correctVal}</strong>`;
+        feedbackEl.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Incorrect. You selected "${selected.value}". Correct answer: <strong>${correctVal}</strong>`;
       }
     });
 
-    scoreDisplay.style.display = 'inline-block';
-    scoreNum.textContent = score;
+    if (scoreDisplay) scoreDisplay.style.display = 'inline-block';
+    if (scoreNum) scoreNum.textContent = score;
 
-    // Trigger Confetti if high score!
+    // Trigger Confetti if student did well
     if (score >= 6 && typeof confetti === 'function') {
       confetti({
-        particleCount: 100,
-        spread: 70,
+        particleCount: 110,
+        spread: 75,
         origin: { y: 0.6 }
       });
     }
 
-    scoreDisplay.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    if (scoreDisplay) scoreDisplay.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   });
 
   // Reset Quiz
-  resetBtn.addEventListener('click', () => {
-    form.reset();
-    progressText.textContent = `0 of ${totalQ} answered`;
-    scoreDisplay.style.display = 'none';
-    document.querySelectorAll('.q-feedback').forEach(fb => {
-      fb.className = 'q-feedback';
-      fb.innerHTML = '';
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      form.reset();
+      if (progressText) progressText.textContent = `0 of ${totalQ} answered`;
+      if (scoreDisplay) scoreDisplay.style.display = 'none';
+      document.querySelectorAll('.q-feedback').forEach(fb => {
+        fb.className = 'q-feedback';
+        fb.innerHTML = '';
+      });
     });
-  });
+  }
 }
 
 /* ========================================================
@@ -504,9 +507,11 @@ function initFormulaModal() {
     renderMathInDocument(modal);
   });
 
-  closeBtn.addEventListener('click', () => {
-    modal.classList.remove('open');
-  });
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('open');
+    });
+  }
 
   modal.addEventListener('click', (e) => {
     if (e.target === modal) {
